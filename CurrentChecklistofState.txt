@@ -1,0 +1,130 @@
+# Truth Algorithm Project - Current State Checklist
+
+## Project Overview
+The Truth Algorithm project implements L. Ron Hubbard's Investigations methodology for logical analysis, evaluating statements based on 14 outpoints (logical errors) and 14 pluspoints (logical strengths).
+
+## Process Flow
+
+1. **Entry Point**: `truth_algorithm.py`
+   - Parses command-line arguments
+   - Loads statements from input JSON file
+   - Initializes the LLM evaluator and classification pipeline
+   - Processes statements and saves results
+
+2. **Statement Processing Pipeline**:
+   a. **Statement Collection**
+      - Statements loaded from JSON with metadata (source, time, context)
+      - Preprocessing and normalization
+
+   b. **Individual Statement Analysis**
+      - Multi-layer classification approach:
+        1. Regex/heuristic layer (rules/rule_engine.py) for high-precision pattern matching
+        2. DeBERTa classifier for semantic understanding
+        3. LLM-based evaluation with RAG for complex cases
+      - Each statement evaluated against all outpoints and pluspoints
+
+   c. **Relational Analysis**
+      - Statements compared to identify contradictions
+      - Supporting evidence detection between statements
+      - Knowledge graph construction (truth_graph.py)
+
+   d. **Classification**
+      - Traffic light system: red (problematic), yellow (uncertain), green (reliable)
+      - Clustering of related problematic statements
+      - Confidence thresholds applied
+
+   e. **Why Finding**
+      - Root cause identification for contradictions
+      - Hypothesis generation for inconsistencies
+      - Follow-up action suggestions
+
+   f. **Reporting**
+      - Findings summarization with evidence
+      - Actionable insights
+      - Alternative interpretations
+      - Confidence scores
+
+3. **Key Components**:
+   - **LLM Evaluator** (models/llm_evaluator.py): Interfaces with custom Ollama model
+   - **RAG System** (models/rag_implementation.py): Retrieves relevant context from knowledge base
+   - **Rule Engine** (rules/rule_engine.py): Implements regex-based classification
+   - **Classification Pipeline** (pipeline/classifier.py): Orchestrates all evaluation layers
+   - **Truth Graph** (truth_graph.py): Builds knowledge graph of related statements
+   - **Vector Store** (utils/build_vector_store.py): Creates embeddings for RAG system
+
+## Current Implementation Status
+- ✅ Regex/heuristic layer for high-precision pattern matching
+- ✅ LLM-based evaluation for both outpoints and pluspoints
+- ✅ RAG system for knowledge retrieval during evaluation
+- ✅ Caching system for evaluation results
+- ✅ Batch processing capability for efficient evaluation
+- ✅ Custom Ollama model with Investigations methodology knowledge
+- ✅ Traffic light classification system
+- ✅ Basic relational analysis
+- ✅ Vector store for knowledge base embeddings
+- ✅ Holistic analysis guide for comprehensive evaluation
+
+## Pending Implementation
+- ⬜ Complete DeBERTa classifier integration
+- ⬜ Optimize RAG retrieval parameters
+- ⬜ Implement confidence threshold configuration
+- ⬜ Create evaluation dashboard
+- ⬜ Develop domain-specific rule sets
+- ⬜ Enhance explanation generation
+- ⬜ Implement fallback mechanisms for uncertain evaluations
+- ⬜ Optimize for speed and resource usage
+
+## Files That Can Be Removed/Relocated
+1. `docs/RegexLayer(1).txt` - Information has been implemented in rules module
+2. `docs/DeBERTaandLLM(2).txt` - Information has been incorporated into implementation
+3. `docs/InitialClassificationPlan.txt` - Plan has been executed, can be archived
+4. Any `.bak` or temporary files in the root directory
+5. Any duplicate documentation files with version numbers in filenames
+
+## Project Structure
+```
+truth-pipeline/
+│
+├─ rules/
+│  ├─ __init__.py           # Exports rule_classify function
+│  ├─ patterns.yml          # Regex patterns for each outpoint/pluspoint
+│  └─ rule_engine.py        # Implementation of regex-based classification
+│
+├─ models/
+│  ├─ __init__.py           # Exports model interfaces
+│  ├─ deberta_classifier.py # Lightweight model implementation
+│  ├─ llm_evaluator.py      # LLM with RAG integration
+│  ├─ rag_implementation.py # RAG system for knowledge retrieval
+│  └─ model_utils.py        # Shared utilities for models
+│
+├─ pipeline/
+│  ├─ __init__.py
+│  ├─ classifier.py         # Main pipeline that orchestrates all layers
+│  └─ evaluation.py         # Metrics and evaluation tools
+│
+├─ utils/
+│  ├─ build_vector_store.py # Creates embeddings for RAG system
+│  └─ ocr-extraction.bat    # Utility for extracting text from PDFs
+│
+├─ docs/
+│  ├─ Algorithm.txt         # Conceptual framework
+│  ├─ Plan.txt              # Enhancement plan
+│  ├─ project_structure.txt # Project organization
+│  └─ rules_analysis_guide.md # Holistic analysis guide
+│
+├─ truth_graph.py           # Knowledge graph implementation
+├─ truth_algorithm.py       # Main entry point
+└─ config.yml               # Configuration for thresholds, model paths, etc.
+```
+
+## Required Environment
+- Python 3.10+
+- Dependencies: networkx, transformers, torch, spacy, python-dateutil
+- Ollama with custom "truth-evaluator" model
+
+## Usage
+```bash
+python truth_algorithm.py sample.json -v
+```
+
+This document will be updated as the project evolves.

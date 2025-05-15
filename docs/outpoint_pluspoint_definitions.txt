@@ -1,0 +1,93 @@
+# Complete Outpoint and Pluspoint Definitions
+
+## Outpoints
+
+### OMITTED DATA
+1. An omitted anything is an out-point. This can be an omitted person, terminal, object, energy, space, time, form, sequence, or even an omitted scene. Anything that can be omitted that should be there is an out-point.
+2. The hardest ones that you will find will always be the omitted datum. There aren't any personnel in the division. You don't notice this at first glance. You don't notice the omitted data because they're not there.
+
+### ALTERED SEQUENCE
+Any things, events, objects, sizes in a wrong sequence is an out-point. The number series 3, 7, 1, 2, 4, 6, 5, is an altered sequence, or an incorrect sequence. Doing step two of a sequence of actions before doing step one can be counted on to tangle any sequence of actions.
+
+### DROPPED TIME
+Time that should be noted and isn't would be an out-point of dropped time. It is a special case of an omitted datum.
+
+### FALSEHOOD
+When you hear two facts that are contrary, one is a falsehood or both are. A false anything qualifies for this out-point. A false being, terminal, act, intention, anything that seeks to be what it isn't is a falsehood and an out-point. So the falsehood means, "other than it appears," or "other than represented."
+
+### ALTERED IMPORTANCE
+An importance shifted from its actual relative importance, up or down. An out-point.
+
+### WRONG TARGET
+1. Mistaken objective wherein one believes he is or should be reaching toward A and finds he is or should be reaching toward B is an out-point. This is commonly mistaken identity. It is also mistaken purposes or goals.
+2. This means in effect an incorrect selection of an objective to attempt or attack.
+
+### WRONG SOURCE
+1. Is the other side of the coin of wrong target. Information taken from wrong source, orders taken from the wrong source, gifts or materiel taken from wrong source all add up to eventual confusion and possible trouble.
+2. This is the opposite direction from wrong target. An example would be a President of the United States in 1973 using the opinions and congratulations of soviet leaders to make his point with American voters. There are many examples of this out-point.
+
+### CONTRARY FACTS
+When two statements are made on one subject which are contrary to each other, we have contrary facts. Previously we classified this illogic as a falsehood, since one of them must be false. But in doing data analysis one cannot offhand distinguish which is the false fact. Thus it becomes a special out-point.
+
+### ADDED TIME
+In this out-point we have the reverse of dropped time. In added time we have, as the most common example, something taking longer than it possibly could.
+
+### ADDED INAPPLICABLE DATA
+Just plain added data does not necessarily constitute an out-point. It may be someone being thorough. But when the data is in no way applicable to the scene or situation and is added it is a definite out-point. In using this out-point be very sure you also understand the word inapplicable and see that it is only an out-point if the data itself does not apply to the subject at hand.
+
+### INCORRECTLY INCLUDED DATUM
+A switch intended for a house put into an airplane electrical system cuts out at 30,000 feet due to the wrong metal to withstand cold and there goes the airplane. A part from one class of parts is included wrongly in another class of parts. So there is an incorrectly included datum which is a companion to the omitted datum as an out-point.
+
+### ASSUMED IDENTITIES NOT IDENTICAL
+This outpoint occurs when things that are actually different are treated as if they're identical. The patterns detect instances where different things are wrongly equated or confused with each other. This is the A=A=A type thinking mentioned in the text, where someone might look at a horse, think it's a house, and treat it like a schoolteacher.
+
+### ASSUMED SIMILARITIES NOT SIMILAR
+This outpoint occurs when things that don't share meaningful characteristics are treated as if they're similar. The patterns detect forced comparisons, inappropriate analogies, and claims of similarity without actual common attributes.
+
+### ASSUMED DIFFERENCES NOT DIFFERENT
+This outpoint is the opposite of the first - it occurs when things that are actually identical or the same class are treated as if they're different. The patterns detect artificial distinctions, forced differences, and claims of difference without actual distinguishing attributes.
+
+## Pluspoints
+
+### RELATED FACTS KNOWN
+All relevant facts known.
+
+### EVENTS IN CORRECT SEQUENCE
+Events in actual sequence.
+
+### TIME NOTED
+Time is properly noted.
+
+### DATA PROVEN FACTUAL
+Data must be factual, which is to say, true and valid.
+
+### CORRECT RELATIVE IMPORTANCE
+The important and unimportant are correctly sorted out.
+
+### EXPECTED TIME PERIOD
+Events occurring or done in the time one would reasonably expect them to be.
+
+### ADEQUATE DATA
+No sectors of omitted data that would influence the situation.
+
+### APPLICABLE DATA
+The data presented or available applies to the matter in hand and not something else.
+
+### CORRECT SOURCE
+Not wrong source.
+
+### CORRECT TARGET
+Not going in some direction that would be wrong for the situation.
+
+### DATA IN SAME CLASSIFICATION
+Data from two or more different classes of material not introduced as the same class.
+
+### IDENTITIES ARE IDENTICAL
+Not similar or different.
+
+### SIMILARITIES ARE SIMILAR
+Not identical or different.
+
+### DIFFERENCES ARE DIFFERENT
+Not made to be identical or similar.
+

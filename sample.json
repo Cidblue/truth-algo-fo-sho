@@ -1,0 +1,20 @@
+[
+  {
+    "id": "s1",
+    "text": "The factory reported record profits in Q1.",
+    "time": "2025-01-15",
+    "source": "Finance-Dept"
+  },
+  {
+    "id": "s2",
+    "text": "We were unable to pay suppliers in Q1.",
+    "time": "2025-01-20",
+    "source": "Accounts-Payable"
+  },
+  {
+    "id": "s3",
+    "text": "Everyone knows the CEO is embezzling funds!!",
+    "time": "2025-01-25",
+    "source": "Office-Rumor"
+  }
+]

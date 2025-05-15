@@ -1,0 +1,21 @@
+truth-pipeline/
+│
+├─ rules/
+│  ├─ __init__.py           # Exports rule_classify function
+│  ├─ patterns.yml          # Regex patterns for each outpoint/pluspoint
+│  └─ rule_engine.py        # Implementation of regex-based classification
+│
+├─ models/
+│  ├─ __init__.py           # Exports model interfaces
+│  ├─ deberta_classifier.py # Lightweight model implementation
+│  ├─ llm_evaluator.py      # Your existing LLM with RAG (as fallback)
+│  └─ model_utils.py        # Shared utilities for models
+│
+├─ pipeline/
+│  ├─ __init__.py
+│  ├─ classifier.py         # Main pipeline that orchestrates all layers
+│  └─ evaluation.py         # Metrics and evaluation tools
+│
+├─ truth_graph.py           # Your existing graph implementation
+├─ truth_algorithm.py       # Main entry point (simplified)
+└─ config.yml               # Configuration for thresholds, model paths, etc.

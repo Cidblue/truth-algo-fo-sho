@@ -1,0 +1,53 @@
+# LLM Knowledge Improvement Plan for Truth Algorithm
+
+## Phase 1: Custom Model Creation
+- [x] Extract key concepts from Investigations.txt/pdf
+- [x] Create condensed reference guide of outpoints and pluspoints
+- [x] Write comprehensive system prompt incorporating Investigations methodology
+- [x] Create Modelfile with the system prompt
+- [x] Build custom model using Ollama
+- [x] Test custom model against baseline model
+- [x] Adjust system prompt based on test results
+
+## Phase 2: RAG Implementation
+- [x] Extract and segment Investigations document into chunks
+- [x] Create embeddings for each chunk
+- [x] Implement vector database (e.g., FAISS, Chroma)
+- [x] Create retrieval function to find relevant chunks for each evaluation
+- [x] Modify evaluation prompts to include retrieved context
+- [x] Test RAG approach against custom model
+- [ ] Optimize chunk size and retrieval parameters
+
+## Phase 3: Feedback Loop System
+- [ ] Create evaluation tracking database
+- [x] Implement confidence scoring for model outputs
+- [ ] Design feedback collection mechanism
+- [ ] Build prompt improvement system based on successful evaluations
+- [ ] Create dataset of correctly classified examples
+- [ ] Implement periodic retraining of embeddings
+- [ ] Develop dashboard for monitoring model performance
+
+## Phase 4: Knowledge Expansion
+- [ ] Identify gaps in model's understanding through evaluation logs
+- [ ] Create supplementary training materials for weak areas
+- [ ] Incorporate domain-specific examples
+- [ ] Add real-world case studies demonstrating outpoints/pluspoints
+- [ ] Develop specialized prompts for complex evaluation scenarios
+- [ ] Create evaluation templates for different statement types
+- [ ] Build comprehensive test suite covering all outpoints/pluspoints
+
+## Phase 5: Integration and Optimization
+- [x] Integrate custom model with main Truth Algorithm
+- [x] Optimize API calls and caching
+- [x] Implement batch processing for efficiency
+- [ ] Create fallback mechanisms for uncertain evaluations
+- [ ] Develop explanation generation for evaluations
+- [ ] Optimize for speed and resource usage
+- [ ] Document the entire system for maintenance
+
+## New Tasks Based on Implementation Experience
+- [ ] Add logging system for RAG retrievals to evaluate context quality
+- [ ] Implement confidence threshold configuration for different rule types
+- [ ] Create visualization tools for evaluation results
+- [ ] Develop automated testing framework for algorithm accuracy
+- [ ] Build domain-specific knowledge bases for specialized evaluations

@@ -1,0 +1,471 @@
+# Outpoints
+OMITTED_DATA:
+  out: [
+      # Explicit mentions of missing information
+      "\\b(TBD|unknown|n/?a|___+|missing|absent|lacking|omitted)\\b",
+      # Empty statements
+      "^\\s*$",
+      # Statements indicating incomplete information
+      "\\b(no information (on|about)|details (missing|unavailable)|not (specified|mentioned|included))\\b",
+      # Phrases indicating awareness of missing elements
+      "\\b(without (any|the) (mention of|reference to)|fails to (mention|include|address))\\b",
+      # Statements with questions about missing elements
+      "\\b(where (is|are the|what happened to the|who was responsible for)\\b",
+      # Incomplete data indicators
+      "\\b(insufficient|incomplete|partial|fragmentary|limited)\\b(?=.*\\b(information|data|details|evidence)\\b)",
+    ]
+  plus: [
+      # Comprehensive information indicators
+      "\\b(comprehensive|complete|thorough|exhaustive|detailed)\\b(?=.*\\b(information|data|details|report|analysis)\\b)",
+      # Explicit mentions of completeness
+      "\\b(all (relevant|necessary|required|pertinent) (information|data|details|facts) (included|provided|available|present))\\b",
+      # No missing information
+      "\\b(no (missing|omitted|excluded|overlooked) (information|data|details|facts))\\b",
+      # Full disclosure indicators
+      "\\b(full disclosure|fully documented|completely described|thoroughly explained)\\b",
+      # Comprehensive coverage
+      "\\b(covers all|addresses all|includes all|accounts for all)\\b(?=.*\\b(aspects|elements|factors|components)\\b)",
+    ]
+ALTERED_SEQUENCE:
+  out: [
+      # Temporal contradictions
+      "\\b(then|after|following|subsequently).*\\b(before|prior to|previously|earlier)\\b",
+      # Explicit mentions of wrong order
+      "\\b(out of order|wrong sequence|incorrect order|jumbled|mixed up)\\b",
+      # Numbered steps in wrong order
+      "\\bstep\\s+([2-9]|[1-9][0-9]).*?\\bstep\\s+([1-9])\\b(?=.*?\\1\\s*>\\s*\\2)",
+      # Reversed date sequences
+      "\\b(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}).*?\\b(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4})\\b(?=.*?\\2\\s+before\\s+\\1)",
+      # First/last contradictions
+      "\\b(last|final|end).*?\\b(first|initial|beginning|start)\\b(?=.*?\\1\\s+before\\s+\\2)",
+    ]
+  plus: [
+      # Correct chronological indicators
+      "\\b(chronological|sequential|ordered|step-by-step)\\b(?=.*\\b(sequence|order|progression|series|timeline)\\b)",
+      # Explicit mentions of correct order
+      "\\b(correct (order|sequence|chronology|timeline)|proper (order|sequence|chronology|timeline))\\b",
+      # Sequential markers
+      "\\b(first|initially|to begin with).*\\b(then|next|subsequently|afterward|later|finally)\\b",
+      # Logical progression
+      "\\b(followed by|leading to|resulting in|culminating in)\\b",
+      # Correctly ordered dates
+      "\\b(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}).*?\\b(\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4})\\b(?=.*?\\1\\s+before\\s+\\2)",
+    ]
+DROPPED_TIME:
+  plus: [
+      # Dates (year, month names)
+      "\\b(\\d{4}|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\\b",
+      # Date formats (MM/DD/YYYY, DD-MM-YYYY, etc.)
+      "\\b\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}\\b",
+      # Time expressions
+      "\\b\\d{1,2}:\\d{2}\\s*(?:am|pm)?\\b",
+      # Relative time expressions
+      "\\b(yesterday|today|tomorrow|last week|next month)\\b",
+      # Duration expressions
+      "\\b(for|during|over)\\s+\\d+\\s+(day|week|month|year)s?\\b",
+      # Specific time period indicators
+      "\\b(in|during|throughout)\\s+(the\\s+)?(spring|summer|fall|autumn|winter|morning|afternoon|evening|night)\\b",
+      # Historical period references
+      "\\b(in|during|throughout)\\s+(the\\s+)?(century|decade|era|period|age)\\b",
+    ]
+  out: [
+      # Statements about events that should have time but don't
+      "\\b(happened|occurred|took place|began|ended|started)\\b(?!.*\\b(on|at|in|during|after|before|since|until|from|between)\\b.*\\b(\\d|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|yesterday|today|tomorrow|week|month|year)\\b)",
+      # Explicit mentions of missing time
+      "\\b(undated|no date|unknown time|time not specified|date unknown)\\b",
+      # Questions about when something happened
+      "\\b(when did|when was|what time|what date)\\b",
+      # Vague time references
+      "\\b(at some point|sometime|eventually|one day|once upon a time)\\b(?!.*\\b(specific|exact|precise)\\b)",
+      # Missing temporal context
+      "\\b(suddenly|unexpectedly|out of nowhere|all of a sudden)\\b(?!.*\\b(after|during|while|when|as)\\b)",
+    ]
+FALSEHOOD:
+  out: [
+      # Explicit mentions of falsehood
+      "\\b(proven false|debunked|disproven|fabricated|untrue|incorrect|inaccurate)\\b",
+      # Contradictory statements
+      "\\b(not true|contrary to|contradicts|conflicts with)\\b",
+      # Deception indicators
+      "\\b(misleading|deceptive|fraudulent|fake|counterfeit|bogus)\\b",
+      # Misrepresentation
+      "\\b(misrepresented|falsely claimed|falsely stated|pretends to be)\\b",
+      # Explicit corrections
+      "\\b(correction:|this is false|in fact,|actually,)\\b",
+      # Questioning truth
+      "\\b(no evidence (for|of)|unsubstantiated claim)\\b",
+      # Factual errors
+      "\\b(factual error|factually wrong|mistaken assertion|erroneous claim)\\b",
+      # Deliberate falsehoods
+      "\\b(lie|lying|lied|hoax|conspiracy theory|propaganda)\\b",
+    ]
+  plus: [
+      # Verified truth indicators
+      "\\b(verified|confirmed|proven true|factual|accurate|correct)\\b",
+      # Evidence indicators
+      "\\b(evidence shows|data confirms|records indicate|research demonstrates)\\b",
+      # Official confirmation
+      "\\b(officially confirmed|authenticated|validated|corroborated)\\b",
+      # Truth verification
+      "\\b(fact-checked|verified by|confirmed by|according to|supported by)\\b(?=.*\\b(reliable|credible|authoritative|official|expert)\\b)",
+      # Factual basis
+      "\\b(based on|grounded in|derived from|supported by)\\b(?=.*\\b(facts|evidence|data|research|studies|findings)\\b)",
+      # Accuracy indicators
+      "\\b(accurate|precise|exact|correct|right)\\b(?=.*\\b(information|data|details|figures|statistics|numbers)\\b)",
+    ]
+ALTERED_IMPORTANCE:
+  out: [
+      # Extreme exaggeration
+      "\\b(most important|critical|crucial|essential|vital|paramount|catastrophic)\\b(?=.*\\b(minor|trivial|small|insignificant)\\b)",
+      # Absolute terms suggesting exaggeration
+      "\\b(always|never|undeniably|absolutely|completely|entirely|without question|biggest ever|worst ever)\\b",
+      # Minimizing important things
+      "\\b(just|only|merely|simply|nothing but)\\b(?=.*\\b(significant|important|critical|crucial)\\b)",
+      # Explicit mentions of misplaced importance
+      "\\b(overemphasized|underemphasized|blown out of proportion|making a mountain out of a molehill)\\b",
+      # Contradictory importance indicators
+      "\\b(major|significant|important)\\b(?=.*\\b(but not worth|but doesn't matter|but isn't relevant)\\b)",
+      # Hyperbole
+      "\\b(earth-shattering|life-changing|revolutionary|groundbreaking|unprecedented)\\b(?=.*\\b(routine|common|ordinary|typical|standard)\\b)",
+      # Trivializing significant matters
+      "\\b(no big deal|not worth mentioning|hardly worth noting)\\b(?=.*\\b(serious|significant|important|major)\\b)",
+      # Explicit mentions of misplaced importance
+      "\\b(overemphasizes|exaggerates|overstates|inflates|magnifies)\\b(?=.*\\b(importance|significance|relevance|impact)\\b)",
+      # Trivializing important matters
+      "\\b(trivializes|downplays|minimizes|understates|diminishes)\\b(?=.*\\b(importance|significance|relevance|impact)\\b)",
+      # Disproportionate focus
+      "\\b(disproportionate|undue|excessive|unwarranted)\\b(?=.*\\b(attention|focus|emphasis|importance)\\b)",
+      # Missing priorities
+      "\\b(ignores|overlooks|disregards|neglects)\\b(?=.*\\b(critical|essential|key|vital|important)\\b)",
+      # Explicit mentions of wrong priorities
+      "\\b(wrong|incorrect|misplaced|skewed)\\b(?=.*\\b(priorities|emphasis|focus|importance)\\b)",
+    ]
+  plus: [
+      # Balanced assessment indicators
+      "\\b(proportionate|appropriate|reasonable|measured|balanced)\\b(?=.*\\b(response|reaction|assessment|evaluation)\\b)",
+      # Explicit correct importance
+      "\\b(properly|correctly|accurately)\\b(?=.*\\b(prioritized|weighted|valued|assessed)\\b)",
+      # Nuanced evaluation
+      "\\b(on one hand|on the other hand|however|nevertheless|although|while)\\b(?=.*\\b(important|significant|relevant|critical)\\b)",
+      # Proper emphasis
+      "\\b(emphasizes|highlights|focuses on|stresses|underscores)\\b(?=.*\\b(key|main|central|critical|essential)\\b)",
+      # Correct prioritization
+      "\\b(prioritizes|ranks|orders|classifies)\\b(?=.*\\b(according to|based on|relative to)\\b(?=.*\\b(importance|significance|relevance|impact)\\b))",
+      # Appropriate weight
+      "\\b(gives|assigns|attributes)\\b(?=.*\\b(appropriate|proper|suitable|fitting|due)\\b(?=.*\\b(weight|importance|significance|attention)\\b))",
+    ]
+WRONG_TARGET:
+  out: [
+      # Explicit mentions of wrong target
+      "\\b(wrong target|incorrect focus|misdirected|misaimed|misplaced blame)\\b",
+      # Blaming unrelated entities
+      "\\b(blames|accuses|faults|holds responsible)\\b(?=.*\\b(unrelated|uninvolved|innocent|wrong)\\b)",
+      # Addressing wrong issues
+      "\\b(addresses|tackles|focuses on|targets)\\b(?=.*\\b(wrong|incorrect|irrelevant|unrelated)\\b(?=.*\\b(issue|problem|concern|matter)\\b))",
+      # Misattribution
+      "\\b(attributes|ascribes|assigns|credits)\\b(?=.*\\b(wrongly|incorrectly|falsely|mistakenly)\\b)",
+      # Scapegoating
+      "\\b(scapegoat|fall guy|taking the blame|bearing the brunt)\\b",
+    ]
+  plus: [
+      # Correct target identification
+      "\\b(correctly identifies|properly targets|accurately focuses on|rightly addresses)\\b",
+      # Appropriate attribution
+      "\\b(attributes|ascribes|assigns|credits)\\b(?=.*\\b(correctly|properly|accurately|rightly)\\b)",
+      # Precise focus
+      "\\b(focuses|concentrates|centers|zeroes in)\\b(?=.*\\b(precisely|exactly|specifically)\\b(?=.*\\b(on the|upon the|at the)\\b))",
+      # Right direction
+      "\\b(directed|aimed|targeted|oriented)\\b(?=.*\\b(correctly|properly|appropriately|suitably)\\b)",
+      # Proper responsibility assignment
+      "\\b(responsibility|accountability|blame|credit)\\b(?=.*\\b(properly|correctly|accurately|justly)\\b(?=.*\\b(assigned|attributed|given|placed)\\b))",
+    ]
+WRONG_SOURCE:
+  out: [
+      # Explicit mentions of wrong source
+      "\\b(wrong|incorrect|unreliable|questionable|dubious) (source|origin|provider|supplier)\\b",
+      # Inappropriate authority
+      "\\b(citing|quoting|referencing|according to)\\b.*\\b(unqualified|inappropriate|irrelevant|biased)\\b",
+      # Conflict of interest
+      "\\b(conflict of interest|self-serving|vested interest)\\b",
+      # Outdated or obsolete sources
+      "\\b(outdated|obsolete|superseded|no longer valid)\\b.*\\b(source|reference|study|report|data)\\b",
+      # Unverified sources
+      "\\b(unverified|unconfirmed|uncorroborated|anonymous|unnamed)\\b.*\\b(source|report|claim|allegation)\\b",
+      # Misattribution
+      "\\b(falsely attributed|misattributed|wrongly credited)\\b",
+    ]
+  plus: [
+      # Reliable sources
+      "\\b(reliable|credible|authoritative|trustworthy|reputable)\\b.*\\b(source|reference|expert|authority)\\b",
+      # Primary sources
+      "\\b(primary|direct|firsthand|original)\\b.*\\b(source|evidence|data|testimony|witness)\\b",
+      # Official sources
+      "\\b(official|authorized|certified|accredited)\\b.*\\b(source|statement|report|document)\\b",
+      # Verified sources
+      "\\b(verified|confirmed|corroborated|validated)\\b.*\\b(source|information|data|evidence)\\b",
+      # Appropriate expertise
+      "\\b(qualified|expert|specialized|knowledgeable)\\b.*\\b(source|authority|professional|specialist)\\b",
+    ]
+CONTRARY_FACTS:
+  out: [
+      # Explicit contradictions
+      "\\b(contradicts|contradicting|contradiction|contrary to|conflicts with|inconsistent with)\\b",
+      # Direct negations
+      "\\b(is not|was not|will not|cannot|doesn't|didn't|won't)\\b.*\\b(is|was|will|can|does|did|will)\\b",
+      # Mutually exclusive statements
+      "\\b(both|simultaneously|at the same time)\\b.*\\b(and|yet|but|however|nevertheless)\\b",
+      # Opposing claims
+      "\\b(claims|states|reports|asserts)\\b.*\\b(while|whereas|but|however|yet)\\b.*\\b(claims|states|reports|asserts)\\b",
+      # Explicit mentions of contradictory information
+      "\\b(contradictory|conflicting|inconsistent|incompatible)\\b.*\\b(information|data|evidence|reports|statements|accounts)\\b",
+      # Temporal impossibilities
+      "\\b(present|absent|here|there)\\b.*\\b(and|yet|but|while)\\b.*\\b(also|simultaneously)\\b",
+    ]
+  plus: [
+      # Consistent facts
+      "\\b(consistent|coherent|aligned|in agreement|compatible)\\b.*\\b(facts|data|evidence|information|accounts)\\b",
+      # Corroborating information
+      "\\b(corroborates|confirms|supports|backs up|reinforces|validates)\\b",
+      # Multiple sources agreeing
+      "\\b(multiple|several|various|different)\\b.*\\b(sources|reports|studies|experts)\\b.*\\b(agree|confirm|support|validate)\\b",
+      # Explicit mentions of consistency
+      "\\b(no contradictions|no inconsistencies|no conflicts)\\b",
+      # Logical consistency
+      "\\b(logically consistent|internally consistent|coherent narrative|consistent account)\\b",
+    ]
+ADDED_TIME:
+  out: [
+      # Explicit mentions of excessive time
+      "\\b(too long|excessive time|unreasonably long|impossibly long|longer than possible)\\b",
+      # Exaggerated durations
+      "\\b(centuries|decades|years|months|weeks|days|hours)\\b.*\\b(for|to|on)\\b.*\\b(simple|basic|quick|routine|minor)\\b",
+      # Impossible timeframes
+      "\\b(instantly|immediately|in seconds)\\b.*\\b(complex|elaborate|extensive|comprehensive)\\b",
+      # Contradictory time statements
+      "\\b(began|started)\\b.*\\b(after|later than)\\b.*\\b(ended|finished|completed)\\b",
+      # Explicit mentions of time padding
+      "\\b(padded|inflated|exaggerated|extended)\\b.*\\b(timeline|schedule|duration|timeframe)\\b",
+      # Physically impossible speeds
+      "\\b(traveled|moved|went)\\b.*\\b(\\d+)\\b.*\\b(miles|kilometers)\\b.*\\b(in|within)\\b.*\\b(seconds|minutes)\\b",
+    ]
+  plus: [
+      # Reasonable timeframes
+      "\\b(reasonable|appropriate|expected|normal|typical)\\b.*\\b(time|duration|period|timeframe)\\b",
+      # Accurate timing
+      "\\b(precisely|exactly|accurately)\\b.*\\b(timed|measured|recorded|tracked)\\b",
+      # Consistent with physical limitations
+      "\\b(consistent with|in line with|according to|matching)\\b.*\\b(physical|natural|normal|typical|expected)\\b.*\\b(limits|constraints|capabilities|possibilities)\\b",
+      # Verified timelines
+      "\\b(verified|confirmed|validated|corroborated)\\b.*\\b(timeline|schedule|duration|timeframe)\\b",
+      # Explicit mentions of correct timing
+      "\\b(correct|accurate|precise|exact)\\b.*\\b(timing|duration|period|interval)\\b",
+    ]
+ADDED_INAPPLICABLE_DATA:
+  out: [
+      # Explicit mentions of irrelevance
+      "\\b(irrelevant|unrelated|extraneous|immaterial|off-topic|beside the point)\\b",
+      # Tangential information markers
+      "\\b(by the way|incidentally|as an aside|on a different note|speaking of which)\\b",
+      # Topic shifts
+      "\\b(changing the subject|to digress|moving on to|switching gears|in other news)\\b",
+      # Explicit mentions of inapplicability
+      "\\b(not applicable|inapplicable|not pertinent|not germane|has nothing to do with)\\b",
+      # Non sequiturs
+      "\\b(non sequitur|does not follow|unconnected|disconnected)\\b",
+      # Red herrings
+      "\\b(red herring|distraction|misdirection|smoke screen)\\b",
+    ]
+  plus: [
+      # Explicit mentions of relevance
+      "\\b(relevant|applicable|pertinent|germane|on-topic|on-point)\\b",
+      # Focused information
+      "\\b(focused|targeted|specific|precise|exact|directly related)\\b",
+      # Explicit connections
+      "\\b(relates to|connects to|pertains to|applies to|relevant to)\\b",
+      # Purposeful inclusion
+      "\\b(included because|mentioned for|cited to|referenced to|provided to)\\b.*\\b(show|demonstrate|illustrate|support|explain)\\b",
+      # Explicit mentions of applicability
+      "\\b(applicable|directly applicable|specifically applicable|particularly relevant)\\b",
+    ]
+INCORRECTLY_INCLUDED_DATUM:
+  out: [
+      # Explicit mentions of incorrect inclusion
+      "\\b(incorrectly included|wrongly included|improperly included|mistakenly included|erroneously included)\\b",
+      # Category mismatches
+      "\\b(wrong|incorrect|improper|unsuitable|inappropriate)\\b.*\\b(category|classification|class|group|type)\\b",
+      # Incompatible elements
+      "\\b(incompatible|not compatible|mismatched|not designed for|not meant for)\\b",
+      # Wrong context indicators
+      "\\b(out of place|doesn't belong|shouldn't be|has no place|foreign to)\\b",
+      # Explicit mentions of wrong application
+      "\\b(not designed for|not intended for|not meant for|not suitable for|not appropriate for)\\b.*\\b(this|that|such|the)\\b.*\\b(purpose|use|application|context|environment)\\b",
+      # Misapplied standards or methods
+      "\\b(applying|using|implementing|following)\\b.*\\b(standards|methods|procedures|protocols|guidelines)\\b.*\\b(from|of|for)\\b.*\\b(different|another|unrelated|separate)\\b",
+    ]
+  plus: [
+      # Correct inclusion
+      "\\b(correctly included|properly included|appropriately included|suitably included)\\b",
+      # Proper categorization
+      "\\b(proper|correct|appropriate|suitable|right)\\b.*\\b(category|classification|class|group|type)\\b",
+      # Compatible elements
+      "\\b(compatible|well-matched|designed for|meant for|suitable for)\\b",
+      # Correct context indicators
+      "\\b(belongs in|fits in|appropriate for|suitable for|designed for)\\b",
+      # Explicit mentions of correct application
+      "\\b(specifically designed for|intended for|meant for|suitable for|appropriate for)\\b.*\\b(this|that|such|the)\\b.*\\b(purpose|use|application|context|environment)\\b",
+      # Correctly applied standards or methods
+      "\\b(correctly applying|properly using|appropriately implementing|suitably following)\\b.*\\b(standards|methods|procedures|protocols|guidelines)\\b",
+    ]
+ASSUMED_IDENTITIES_NOT_IDENTICAL:
+  out: [
+      # Treating different things as identical
+      "\\b(same as|identical to|equivalent to|exactly like)\\b(?!.*\\b(similar|comparable|analogous)\\b)",
+      # A=A=A type thinking
+      "\\b(is|are)\\s+both\\s+a\\b.*\\band\\s+a\\b",
+      # Explicit false equivalence
+      "\\b(no difference between|indistinguishable from|one and the same)\\b",
+      # Confusing distinct entities
+      "\\b(confused with|mistaken for|treated as if it were)\\b",
+      # Equating fundamentally different things
+      "\\b(equating|equates|conflating|conflates)\\b.*\\bwith\\b",
+      # Explicit mentions of false equivalence
+      "\\b(falsely equates|wrongly identifies|incorrectly treats as identical|mistakenly equates)\\b",
+      # Different things treated as same
+      "\\b(different|distinct|separate|unique)\\b(?=.*\\b(treated as|considered|regarded as|viewed as)\\b(?=.*\\b(same|identical|equivalent|interchangeable)\\b))",
+      # Confusion of identity
+      "\\b(confuses|mistakes|conflates|confounds)\\b(?=.*\\b(with|for|as)\\b)",
+      # False identity claims
+      "\\b(is not the same as|differs from|is distinct from)\\b(?=.*\\b(but is treated as|yet considered|still regarded as)\\b)",
+      # A=A=A type thinking
+      "\\b(equating|equates|treating|treats)\\b(?=.*\\b(dissimilar|different|distinct|unrelated)\\b(?=.*\\b(things|items|entities|concepts)\\b(?=.*\\b(as identical|as the same|as equivalent)\\b)))",
+    ]
+  plus: [
+      # Correctly identifying identical things
+      "\\b(genuinely identical|truly the same|exact duplicate|perfect match)\\b",
+      # Precise identification
+      "\\b(correctly identified as|properly classified as|accurately recognized as)\\b",
+      # Proper recognition of sameness
+      "\\b(correctly|properly|accurately|rightly)\\b(?=.*\\b(identifies|recognizes|treats|regards)\\b(?=.*\\b(identical|same|equivalent|matching)\\b))",
+      # Exact correspondence
+      "\\b(exactly|precisely|perfectly)\\b(?=.*\\b(corresponds to|matches|aligns with|fits)\\b)",
+      # True equivalence
+      "\\b(true|genuine|actual|real)\\b(?=.*\\b(equivalence|identity|sameness|correspondence)\\b)",
+    ]
+ASSUMED_SIMILARITIES_NOT_SIMILAR:
+  out: [
+      # Forced comparisons
+      "\\b(like comparing|as similar as|comparable to)\\b.*\\b(apples and oranges|chalk and cheese)\\b",
+      # Inappropriate analogies
+      "\\b(false analogy|misleading comparison|inappropriate parallel)\\b",
+      # Claims without common attributes
+      "\\b(similar)\\b(?!.*\\b(because|since|as|due to)\\b)",
+      # Stretched comparisons
+      "\\b(stretching|reaching|tenuous|forced)\\b.*\\b(comparison|similarity|analogy)\\b",
+      # Explicit mentions of dissimilar things compared
+      "\\b(nothing in common|completely different|entirely dissimilar)\\b(?=.*\\b(yet compared|but treated as similar|still equated)\\b)",
+    ]
+  plus: [
+      # Valid comparisons
+      "\\b(valid comparison|apt analogy|fitting parallel|appropriate similarity)\\b",
+      # Explicit common attributes
+      "\\b(similar in that|comparable because|analogous due to)\\b",
+      # Detailed similarity analysis
+      "\\b(share|shares|sharing)\\b.*\\b(characteristics|features|attributes|qualities|properties)\\b",
+    ]
+ASSUMED_DIFFERENCES_NOT_DIFFERENT:
+  out: [
+      # Artificial distinctions
+      "\\b(artificial distinction|false difference|manufactured division)\\b",
+      # Forced differences
+      "\\b(forcing a distinction|creating a difference|inventing a division)\\b",
+      # Claims without distinguishing attributes
+      "\\b(different)\\b(?!.*\\b(because|since|as|due to)\\b)",
+      # Splitting identical things
+      "\\b(splitting hairs|nitpicking|trivial distinction)\\b",
+      # Explicit mentions of identical things treated as different
+      "\\b(exactly the same|perfectly identical|no real difference)\\b(?=.*\\b(yet treated differently|but considered distinct|still separated)\\b)",
+    ]
+  plus: [
+      # Valid distinctions
+      "\\b(valid distinction|real difference|genuine contrast|meaningful separation)\\b",
+      # Explicit distinguishing attributes
+      "\\b(different in that|distinct because|separate due to)\\b",
+      # Detailed difference analysis
+      "\\b(differ|differs|differing)\\b.*\\b(characteristics|features|attributes|qualities|properties)\\b",
+    ]
+
+# Pluspoints
+RELATED_FACTS_KNOWN:
+  plus:
+    [
+      "\\b(according to|as reported by|per the)\\b.*\\b(report|study|dataset)\\b",
+    ]
+EVENTS_IN_CORRECT_SEQUENCE:
+  plus: ["\\b(followed by|then|subsequently)\\b"]
+TIME_NOTED:
+  plus:
+    [
+      "\\b(on|at|since)\\s+\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}\\b",
+      "\\b(\\d{2}:\\d{2}\\s*(?:am|pm)?)\\b",
+    ]
+DATA_PROVEN_FACTUAL:
+  plus: ["\\b(verified by|confirmed by|evidenced by)\\b"]
+CORRECT_RELATIVE_IMPORTANCE:
+  plus: ["\\b(appropriately|proportionately)\\b"]
+EXPECTED_TIME_PERIOD:
+  plus: ["\\b(within|during)\\s+\\d+\\s+(days|months|years)\\b"]
+ADEQUATE_DATA:
+  plus: ["\\b(sufficient|complete)\\b.*\\b(details|information)\\b"]
+APPLICABLE_DATA:
+  plus: ["\\b(relevant|pertinent)\\b.*\\b(context|topic)\\b"]
+CORRECT_SOURCE:
+  plus: ["\\b(cited by|from)\\s+(reuters|bloomberg|government|official)\\b"]
+CORRECT_TARGET:
+  plus: ["\\b(correctly|accurately)\\b.*\\b(identified|attributed)\\b"]
+DATA_IN_SAME_CLASSIFICATION:
+  plus: ["\\b(belongs to|part of)\\b.*\\b(category|group)\\b"]
+IDENTITIES_ARE_IDENTICAL:
+  plus: [
+      # Correctly identifying identical things
+      "\\b(genuinely identical|truly the same|exact duplicate|perfect match)\\b",
+      # Precise identification
+      "\\b(correctly identified as|properly classified as|accurately recognized as)\\b",
+      # Explicit statements of true identity
+      "\\b(is in fact|is indeed|is truly|is actually)\\b.*\\b(identical|the same|one and the same)\\b",
+    ]
+  out: [
+      # Incorrectly treating identical things as different
+      "\\b(falsely distinguished|incorrectly separated|wrongly differentiated)\\b",
+      # Denying true identity
+      "\\b(not the same|different from|distinct from)\\b(?=.*\\b(when they are identical|despite being the same|although they are one)\\b)",
+    ]
+SIMILARITIES_ARE_SIMILAR:
+  plus: [
+      # Accurate similarity recognition
+      "\\b(correctly compared|aptly likened|properly analogized)\\b",
+      # Valid similarity statements
+      "\\b(similar in|share|shares|sharing)\\b.*\\b(ways|aspects|characteristics|features|attributes)\\b",
+      # Explicit similarity analysis
+      "\\b(similarity is based on|comparison is valid because|analogy works due to)\\b",
+    ]
+  out: [
+      # Denying valid similarities
+      "\\b(no similarity|not similar|nothing alike)\\b(?=.*\\b(despite sharing|although they both|even though they)\\b)",
+      # Rejecting valid comparisons
+      "\\b(incomparable|cannot be compared|no valid comparison)\\b(?=.*\\b(yet they share|despite common|although similar in)\\b)",
+    ]
+DIFFERENCES_ARE_DIFFERENT:
+  plus: [
+      # Accurate difference recognition
+      "\\b(correctly distinguished|properly differentiated|accurately contrasted)\\b",
+      # Valid difference statements
+      "\\b(different in|distinct in|varies in|diverges in)\\b.*\\b(ways|aspects|characteristics|features|attributes)\\b",
+      # Explicit difference analysis
+      "\\b(difference is based on|distinction arises from|contrast is evident in)\\b",
+    ]
+  out: [
+      # Denying valid differences
+      "\\b(no difference|identical|the same)\\b(?=.*\\b(despite distinct|although they differ|even though they vary)\\b)",
+      # Rejecting valid distinctions
+      "\\b(indistinguishable|cannot be differentiated|no valid distinction)\\b(?=.*\\b(yet they differ|despite varying|although distinct in)\\b)",
+    ]

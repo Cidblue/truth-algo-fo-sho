@@ -1,0 +1,74 @@
+{
+  "statements": [
+    {
+      "id": "s1",
+      "text": "The factory reported record profits in Q1.",
+      "source": "Finance-Dept",
+      "timestamp": null,
+      "outpoints": [],
+      "pluspoints": [],
+      "truth_score": 0.5
+    },
+    {
+      "id": "s2",
+      "text": "We were unable to pay suppliers in Q1.",
+      "source": "Accounts-Payable",
+      "timestamp": null,
+      "outpoints": [],
+      "pluspoints": [],
+      "truth_score": 0.5
+    },
+    {
+      "id": "s3",
+      "text": "Everyone knows the CEO is embezzling funds!!",
+      "source": "Office-Rumor",
+      "timestamp": null,
+      "outpoints": [],
+      "pluspoints": [],
+      "truth_score": 0.5
+    }
+  ],
+  "classified_statements": [
+    {
+      "id": "s1",
+      "text": "The factory reported record profits in Q1.",
+      "source": "Finance-Dept",
+      "timestamp": null,
+      "outpoints": [],
+      "pluspoints": [],
+      "truth_score": 0.5,
+      "classification": "Possibly True"
+    },
+    {
+      "id": "s2",
+      "text": "We were unable to pay suppliers in Q1.",
+      "source": "Accounts-Payable",
+      "timestamp": null,
+      "outpoints": [],
+      "pluspoints": [],
+      "truth_score": 0.5,
+      "classification": "Possibly True"
+    },
+    {
+      "id": "s3",
+      "text": "Everyone knows the CEO is embezzling funds!!",
+      "source": "Office-Rumor",
+      "timestamp": null,
+      "outpoints": [],
+      "pluspoints": [],
+      "truth_score": 0.5,
+      "classification": "Possibly True"
+    }
+  ],
+  "whys": [],
+  "report": {
+    "summary": {
+      "total_statements": 3,
+      "red_statements": 0,
+      "yellow_statements": 3,
+      "green_statements": 0
+    },
+    "whys": [],
+    "recommendations": []
+  }
+}

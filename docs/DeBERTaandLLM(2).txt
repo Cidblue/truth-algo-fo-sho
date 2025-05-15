@@ -1,0 +1,155 @@
+Below is a minimal but complete wiring guide that glues the pieces together:
+
+scss
+Copy
+Edit
+┌──────── text ────────┐
+│   rule_classify()    │  → if hit → final label
+└─────────┬────────────┘
+          ↓ (no hit)
+   DeBERTa-LoRA classifier          (confidence ≥ τ)
+          │                         ────────────────→ final label
+          ↓ (low-conf)              if conf < τ
+   Dolphin-Llama-3 8B (few-shot prompt)
+          │
+          ↓
+      final label
+You can switch the Llama fallback off at first; the regex + DeBERTa duo already gives a solid pipeline.
+
+1 Install (same env as before)
+bash
+Copy
+Edit
+conda activate truth_nlp
+pip install torch transformers accelerate bitsandbytes peft
+(bitsandbytes is optional if you quantised to 4-bit GGUF and plan to use llama-cpp instead of PyTorch.)
+
+2 Load the fine-tuned DeBERTa-LoRA checkpoint
+python
+Copy
+Edit
+# deberta_pipe.py
+from transformers import (
+    AutoTokenizer, AutoModelForSequenceClassification, TextClassificationPipeline
+)
+import torch
+
+MODEL_DIR = "deberta-lora"          # your saved LoRA directory
+
+tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
+model = AutoModelForSequenceClassification.from_pretrained(
+    MODEL_DIR,
+    torch_dtype=torch.float16,      # or float32 if CPU-only
+    low_cpu_mem_usage=True
+)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+
+deberta_pipe = TextClassificationPipeline(
+    model=model,
+    tokenizer=tokenizer,
+    device=device.index if device.type == "cuda" else -1,
+    top_k=None,                    # we want the full prob vector
+    function_to_apply="softmax"
+)
+LABELS = list(model.config.id2label.values())   # same 28 labels
+On CPU the 44 M-param model takes ≈ 200 MB RAM and runs at 25–40 ms per sentence.
+
+3 Combine rules + DeBERTa
+python
+Copy
+Edit
+# pipeline.py
+from rules import rule_classify
+from deberta_pipe import deberta_pipe, LABELS
+
+THRESHOLD = 0.75      # tweak via dev-set
+
+def deberta_classify(text):
+    out = deberta_pipe(text)[0]     # list of dicts sorted by score
+    best = max(out, key=lambda x: x["score"])
+    return best["label"], best["score"]
+
+def classify(text, use_llm=False):
+    # 1) regex / heuristic
+    rule_hits = rule_classify(text)
+    if rule_hits:
+        axis, score = rule_hits[0]
+        label = f"{axis}_PLUS" if score < 0.5 else f"{axis}_OUT"
+        return {"label": label, "method": "rules", "score": score}
+
+    # 2) DeBERTa
+    label, conf = deberta_classify(text)
+    if conf >= THRESHOLD or not use_llm:
+        return {"label": label, "method": "deberta", "score": conf}
+
+    # 3) LLM fallback (optional)
+    if use_llm:
+        from llm_fallback import call_llama   # small wrapper around Ollama
+        label_llm, rationale = call_llama(text)
+        return {"label": label_llm, "method": "llm", "score": None, "why": rationale}
+Why a threshold?
+DeBERTa is confident (p ≥ 0.9) on many cases; when it’s unsure it usually spreads probabilities. Setting THRESHOLD = 0.75 means only borderline items go to the heavyweight LLM.
+
+4 Quick evaluation of the combined layer
+python
+Copy
+Edit
+# eval_pipeline.py
+import pandas as pd, sklearn.metrics as skm
+from pipeline import classify
+
+df = pd.read_csv("test_cases.csv")             # text,label
+preds = [classify(t)["label"] for t in df.text]
+
+print(skm.classification_report(df.label, preds))
+Run once before adding the ML stage:
+
+
+Stage	Macro F1 (sample)
+rules only	0.34
++ DeBERTa (τ = 0.75)	0.78
+(Numbers illustrative—depend on your dev-set.)
+
+5 Wiring in the Dolphin-Llama-3 fallback (later)
+Create a tiny wrapper:
+
+python
+Copy
+Edit
+# llm_fallback.py
+import subprocess, json, re
+
+def call_llama(text):
+    prompt = f"""
+You are a logic auditor. Possible labels: {', '.join(LABELS)}.
+Return JSON {{ "label": "<one_label>", "why": "<rationale>" }}.
+Statement: {text}
+"""
+    out = subprocess.check_output(["ollama", "run", "dolphin-llama3:8b", prompt])
+    m = re.search(r"\{.*\}", out.decode("utf-8"), re.S)
+    data = json.loads(m.group(0))
+    return data["label"], data["why"]
+Then set use_llm=True when you want the full pipeline. Every low-confidence item now gets a human-readable explanation that you can store for audit or feed back into the training set.
+
+6 Tuning tips
+
+Component	What to tweak	Effect
+THRESHOLD	Higher → fewer LLM calls, more reliance on DeBERTa.	Trade cost vs. recall.
+patterns.yml	Add/remove regexes.	Precision ↑↓; coverage ↑.
+LoRA rank / lr / epochs	r, learning_rate, num_train_epochs.	Model accuracy.
+Device dtype	float16, bfloat16, int8 / 4-bit	RAM vs. speed vs. accuracy.
+Always re-run eval_pipeline.py after changes to catch regressions.
+
+Next steps
+Drop these three files (rules.py, deberta_pipe.py, pipeline.py) into your project.
+
+Point MODEL_DIR at your fine-tuned checkpoint.
+
+Run eval_pipeline.py to verify everything links.
+
+Adjust THRESHOLD until you like the precision/recall balance.
+
+(Optional) Bolt on the Llama fallback when you’re ready.
+
+Ping me with any errors or if you’d like to see a walk-through on fine-tuning parameters, quantising to 4-bit, or writing unit tests for the pipeline itself. Good luck!

@@ -1,0 +1,171 @@
+Below is a step-by-step “grow-the-pipeline” recipe that lets you bolt pieces on one at a time, measure the lift from each, and stay within your laptop’s 16 GB RAM.
+
+0 Set up a tiny evaluation corpus first
+Before wiring code, collect ≈200 real sentences (or pairs) that cover all 28 labels.
+Put them in a CSV:
+
+text
+Copy
+Edit
+text,label
+"The e-mail claims … 2019 but cites 2023 data.",ADDED_TIME
+"Suppliers denied ever receiving payment.",CONTRARY_FACTS
+...
+Keep 20 % aside as “dev-test”. This micro-set lets you re-run metrics each time you add a stage.
+
+1 Stage A – Regex + heuristic front-end
+
+Error/Strength	Simple cues you can catch fast
+DROPPED TIME	Sentence lacks any YYYY/MM/DD, “yesterday”, etc. while neighbouring sentences include one
+OMITTED DATA	“???”, “TBD”, empty fields, or length < n
+WRONG SOURCE	URL domain on a user-maintained wiki list you keep
+ADDED TIME	Two different explicit dates inside one clause
+Create a rules.py:
+
+python
+Copy
+Edit
+import re
+
+PATTERNS = {
+    "DROPPED_TIME": lambda s: not re.search(r"\b(?:\d{4}|January|AM|PM)\b", s),
+    "ADDED_TIME":   lambda s: len(re.findall(r"\d{4}", s)) > 1,
+    ...
+}
+
+def rule_classify(txt):
+    hits = [lab for lab,fn in PATTERNS.items() if fn(txt)]
+    return hits or None           # pass through if empty
+Measure baseline precision/recall on dev-test. Expect it to nail only the obvious cases (maybe 30 – 40 % macro F1).
+
+2 Stage B – Encoder model fine-tuned with LoRA
+2.1 Why DeBERTa-v3?
+Encoder-only transformers like BERT are built to produce a single vector for classification — lighter and faster than a chat LLM.
+microsoft/deberta-v3-small → 6 layers, 44 M backbone params, ~200 MB in 4-bit 
+Hugging Face
+
+(BERT = Bidirectional Encoder Representations from Transformers) 
+Wikipedia
+
+2.2 Environment
+bash
+Copy
+Edit
+conda create -n truth_nlp python=3.10
+conda activate truth_nlp
+pip install torch==2.2.1 transformers datasets peft bitsandbytes accelerate evaluate
+2.3 Prepare dataset
+python
+Copy
+Edit
+from datasets import load_dataset, Dataset
+ds = Dataset.from_csv("labeled_statements.csv")
+label_list = sorted(set(ds["label"]))
+id2label = {i:l for i,l in enumerate(label_list)}
+label2id = {l:i for i,l in id2label.items()}
+
+def tokenize(examples):
+    tok = tokenizer(examples["text"], truncation=True)
+    tok["labels"] = [label2id[x] for x in examples["label"]]
+    return tok
+2.4 LoRA fine-tune (single GPU Colab, < 2 h)
+python
+Copy
+Edit
+from peft import LoraConfig, get_peft_model
+from transformers import AutoModelForSequenceClassification, Trainer, TrainingArguments
+
+base = "microsoft/deberta-v3-small"
+model = AutoModelForSequenceClassification.from_pretrained(base, num_labels=len(label_list))
+lora_cfg = LoraConfig(r=8, lora_alpha=16, target_modules=["query_proj","value_proj"])
+model = get_peft_model(model, lora_cfg)  # only ~1 % params trainable
+
+args = TrainingArguments(
+    output_dir="deberta-lora",
+    learning_rate=2e-4,
+    per_device_train_batch_size=16,
+    num_train_epochs=3,
+    fp16=True)
+
+trainer = Trainer(model=model, args=args, train_dataset=ds_train, eval_dataset=ds_val)
+trainer.train()
+model.save_pretrained("deberta-lora")
+LoRA injects tiny rank-decomposition matrices, cutting memory by 10 × and training params by 100 × + . 
+arXiv
+
+2.5 Quantise for laptop inference
+bash
+Copy
+Edit
+pip install optimum optimum[onnxruntime]
+python -m optimum.exporters.onnx --model deberta-lora --task sequence-classification onnx
+(or run with plain PyTorch CPU; still ~25 ms per sentence.)
+
+2.6 Evaluation script
+python
+Copy
+Edit
+from sklearn.metrics import classification_report, confusion_matrix
+preds = trainer.predict(ds_dev).predictions.argmax(-1)
+print(classification_report(ds_dev["labels"], preds, target_names=label_list))
+Expect macro-F1 to jump to 70 – 80 % with only a few hundred examples.
+
+3 Stage C – Llama-3 / Dolphin-8B fallback
+You already have Dolphin-Llama 3 8B in Ollama:
+
+bash
+Copy
+Edit
+ollama run dolphin-llama3:8b "Classify: {text} -> label list"
+Wrap it:
+
+python
+Copy
+Edit
+def llm_fallback(txt, top2):
+    prompt = f"""
+You are a logic auditor. These are the possible labels: {', '.join(label_list)}.
+For the following statement, choose ONE label and give a 1-sentence rationale.
+Statement: {txt}
+""".strip()
+    return ollama_chat(prompt)
+3.1 Glue everything
+python
+Copy
+Edit
+def classify(txt):
+    rule_hit = rule_classify(txt)
+    if rule_hit:
+        return rule_hit[0], "Rule based"
+
+    out = deberta_pipe(txt, top_k=None)
+    conf = max(out["scores"])
+    if conf > 0.75:
+        return out["label"], f"DeBERTa {conf:.2f}"
+    return llm_fallback(txt, out[:2])      # low-confidence ⇒ LLM
+4 Stage-wise evaluation
+
+Pipeline stage	Macro F1	Notes
+Regex only	~0.35	high precision, low recall
++ DeBERTa-LoRA	~0.78	big jump
++ LLM fallback	~0.82-0.85	handles edge cases, gains at long-tail labels
+Run the same classification_report after each addition and watch confusion matrices tighten (ALTERED IMPORTANCE vs. ADDED DATA often swaps early on).
+
+5 Next iterations
+Continue active-learning: feed low-confidence or disagreed items back into the training set.
+
+When the dataset > 5 k rows, consider upgrading to Mistral-7B-Instruct (7 GB 4-bit) for a single-model solution.
+
+Keep heuristic layer anyway; it eliminates needless compute.
+
+Quick glossary
+BERT – Bidirectional Encoder Representations from Transformers; encoder-only architecture that became the baseline for text classification. 
+Wikipedia
+
+DeBERTa – Microsoft’s upgraded BERT with disentangled attention & relative position embeddings; the “v3-small” checkpoint has 6 layers/44 M params. 
+Hugging Face
+
+LoRA – Low-Rank Adaptation; freezes the base model and trains tiny rank matrices, cutting trainable parameters by orders of magnitude. 
+arXiv
+
+Follow the checklist above and you can switch each module on/off with a flag to see exactly how much it improves your OUTPOINT/PLUSPOINT detection. Happy auditing!

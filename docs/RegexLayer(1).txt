@@ -1,0 +1,153 @@
+Below is a starter “regex + heuristic” layer you can drop straight into a rules.py file and iterate on.
+The goal is not to catch every case—just the obvious, low-hanging fruit that:
+
+Fires with very high precision (few false alarms).
+
+Lets the downstream model skip what’s already decided.
+
+1 Folder layout
+arduino
+Copy
+Edit
+truth-pipeline/
+│
+├─ rules.py          # regex / heuristic layer
+├─ patterns.yml      # editable pattern lists
+├─ test_cases.csv    # quick unit-test statements
+└─ __init__.py
+Keeping the regex patterns in a YAML file means you can tweak them without touching code.
+
+2 patterns.yml (minimal seeds)
+yaml
+Copy
+Edit
+DROPPED_TIME:
+  plus:    ["\\b(\\d{4}|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\\b"]
+  out:     ["^(?!.*(\\d{4}|jan|feb|...)).*$"]   # no date-like tokens
+
+ADDED_TIME:
+  out:     ["(?:\\d{4}.*?\\d{4})",              # two years in one clause
+            "(yesterday|today).*?(today|tomorrow)"]
+
+OMITTED_DATA:
+  out:     ["\\b(TBD|unknown|n/?a|___+)\\b",
+            "^\\s*$"]
+
+ALTERED_IMPORTANCE:
+  out:     ["\\b(always|never|undeniably|biggest ever)\\b"]
+
+CONTRARY_FACTS:
+  out:     ["\\b(however|contradicts?|despite)\\b.*\\b(previous|earlier)\\b"]
+
+TIME_NOTED:
+  plus:    ["\\b(on|at|since)\\s+\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}\\b",
+            "\\b(\\d{2}:\\d{2}\\s*(?:am|pm)?)\\b"]
+
+RELATED_FACTS_KNOWN:
+  plus:    ["\\b(according to|as reported by|per the)\\b.*\\b(report|study|dataset)\\b"]
+(Ellipses “…” mean continue the month list; you can shorten with re.I for case-insensitive.)
+
+3 rules.py
+python
+Copy
+Edit
+import re
+import yaml
+from pathlib import Path
+from typing import Dict, List, Tuple, Optional
+
+THIS_DIR = Path(__file__).parent
+PATTERN_FILE = THIS_DIR / "patterns.yml"
+
+def _compile_patterns() -> Dict[str, Dict[str, List[re.Pattern]]]:
+    raw = yaml.safe_load(PATTERN_FILE.read_text())
+    compiled = {}
+    for axis, sub in raw.items():
+        compiled[axis] = {}
+        for polarity, regexes in sub.items():
+            compiled[axis][polarity] = [
+                re.compile(rx, flags=re.I | re.S) for rx in regexes
+            ]
+    return compiled
+
+PATTERNS = _compile_patterns()
+
+def rule_classify(text: str) -> List[Tuple[str, float]]:
+    """
+    Returns list of (axis, score) pairs.
+    score ∈ {0.05 → strong PLUS, 0.95 → strong OUT}
+    """
+    results = []
+    for axis, sub in PATTERNS.items():
+        fired_plus = any(rx.search(text) for rx in sub.get("plus", []))
+        fired_out  = any(rx.search(text) for rx in sub.get("out",  []))
+
+        # mutually exclusive hits
+        if fired_plus and not fired_out:
+            results.append((axis, 0.05))
+        elif fired_out and not fired_plus:
+            results.append((axis, 0.95))
+        # if both (rare) or none fire → leave to ML
+    return results or None
+Usage
+python
+Copy
+Edit
+>>> from rules import rule_classify
+>>> rule_classify("According to Reuters, on 12 Feb 2023 revenue grew 12 %.")
+[('TIME_NOTED', 0.05), ('RELATED_FACTS_KNOWN', 0.05)]
+4 Writing good patterns
+Precision over recall – test new regexes on ∼50 random sentences; add only if FP ≈ 0.
+
+Anchor to phrases your domain actually uses (e.g., “Form 10-K shows…”, “court docket”).
+
+Prefer look-ahead/behind ((?=…)) to avoid consuming words needed by later rules.
+
+Group similar regexes in YAML; name files by axis to keep things tidy when they grow.
+
+5 Recommended development loop
+
+Step	Tool	Goal
+1. Add 2–3 regexes per axis	Edit patterns.yml	Seed layer
+2. pytest tests/	PyTest with your CSV	Ensure no crashes
+3. python eval_regex.py	small script → precision/recall	Keep precision ≥ 90 %
+4. Inspect FPs manually	–	decide to refine or drop pattern
+5. Freeze rules	Git tag	move on to ML stage
+An evaluation helper (eval_regex.py) is just:
+
+python
+Copy
+Edit
+import pandas as pd, rules, sklearn.metrics as skm
+df = pd.read_csv("test_cases.csv")
+preds = [rules.rule_classify(t) or [] for t in df.text]
+y_true = df.label.tolist()
+y_pred = [p[0][0] if p else "NONE" for p in preds]
+print(skm.classification_report(y_true, y_pred))
+6 Extending beyond regex
+Length heuristics: very short strings ⇒ OMITTED_DATA.
+
+External lists: a JSON list of “unreliable sources” triggers WRONG_SOURCE.
+
+Numerical sanity: two numbers with ± > 1 000 000 % difference ⇒ ALTERED_IMPORTANCE.
+
+spaCy rule-based pipeline: pattern-match part-of-speech (e.g., “past tense-verb then past tense-verb” may hint ALTERED_SEQUENCE).
+
+7 When is the rule layer “good enough”?
+
+Metric on dev-set	Target
+Precision (macro)	≥ 0.90
+Recall	0.15–0.30 is ✔ (rest handled by ML)
+Coverage per axis	At least a handful of fires during evaluation
+If precision dips, move that pattern out into a “candidate” list and feed it to the ML layer as a feature instead.
+
+Next actions
+Clone the scaffold above into your project.
+
+Drop 10–15 obvious patterns per axis you care about most (start with time & source).
+
+Run the tiny eval harness; inspect false positives.
+
+When you feel confident, wire rule_classify into the pipeline you built earlier.
+
+Ping me when you’re ready to – I can walk through adding more sophisticated heuristics or connecting this to the DeBERTa layer.
