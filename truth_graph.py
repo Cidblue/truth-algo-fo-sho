@@ -166,6 +166,13 @@ class TruthGraph:
                 if result["contradiction"] and result["confidence"] > 0.5:
                     # Add contradiction relationship
                     self.add_relation(id1, id2, "contradiction")
+
+                    # Add contrary_facts outpoint to both statements
+                    if "contrary_facts" not in stmt1.outpoints:
+                        stmt1.outpoints.append("contrary_facts")
+                    if "contrary_facts" not in stmt2.outpoints:
+                        stmt2.outpoints.append("contrary_facts")
+
                     print(
                         f"Found contradiction between {id1} and {id2}: {result['reason']}")
 

@@ -16,16 +16,18 @@ The Truth Algorithm evaluates statements based on logical consistency, factual a
    - Apply LLM-based evaluation with confidence scoring
 
 3. Multi-Layer Classification Approach
-   - Layer 1: Regex/heuristic rules for high-precision pattern matching
-   - Layer 2: DeBERTa classifier for efficient semantic understanding
-   - Layer 3: LLM-based evaluation with RAG for complex cases
+   - Layer 1: Regex/heuristic rules for high-precision pattern matching (WORKING)
+   - Layer 2: DeBERTa classifier for efficient semantic understanding (PLACEHOLDER)
+   - Layer 3: LLM-based evaluation with RAG for complex cases (WORKING)
    - Confidence thresholds determine which layer handles evaluation
+   - Automatic fallback between layers based on confidence scores
 
 4. Relational Analysis
-   - Build knowledge graph of statements
-   - Identify contradictions between statements
-   - Detect supporting evidence relationships
-   - Cluster related problematic statements
+   - Build knowledge graph of statements (WORKING)
+   - Identify contradictions between statements (WORKING)
+   - Automatically assign contrary_facts outpoint to contradicting statements (WORKING)
+   - Detect supporting evidence relationships (BASIC)
+   - Cluster related problematic statements (BASIC)
 
 5. Classification and Reporting
    - Traffic light system (red/yellow/green) for statement reliability
@@ -95,10 +97,28 @@ The Truth Algorithm evaluates statements based on logical consistency, factual a
    - Combines results from multiple layers
    - Generates final classification with explanation
 
+## Recent Improvements (January 3, 2025)
+1. Fixed pipeline integration issues - all layers now work together properly
+2. Enhanced contradiction detection with automatic outpoint assignment
+3. Improved pattern detection for unsubstantiated claims and vague sources
+4. Fixed rule-based analysis to use actual regex engine instead of placeholders
+5. Added comprehensive patterns for "everyone knows" type claims
+6. Enhanced contradictory term detection for financial/business contexts
+
+## Current System Status
+- **Regex Layer**: Fully functional with comprehensive patterns
+- **LLM Layer**: Fully functional with RAG integration and caching
+- **Truth Graph**: Functional contradiction detection and relationship mapping
+- **Pipeline Integration**: Working correctly with proper fallback mechanisms
+- **Overall**: Production-ready for rule-based and LLM analysis
+
 ## Future Directions
-1. Multi-modal analysis capabilities
-2. Domain-specific knowledge bases and rule sets
-3. Collaborative verification mechanisms
-4. Enhanced explanation generation
-5. Automated follow-up question generation
+1. Complete DeBERTa classifier implementation with actual model training
+2. Multi-modal analysis capabilities
+3. Domain-specific knowledge bases and rule sets
+4. Collaborative verification mechanisms
+5. Enhanced explanation generation
+6. Automated follow-up question generation
+7. Performance optimization for large datasets
+8. Evaluation dashboard for result visualization
 

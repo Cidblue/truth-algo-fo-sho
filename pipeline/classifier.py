@@ -116,6 +116,35 @@ class ClassificationPipeline:
             "method": "uncertain"
         }
 
+    def classify_with_deberta(self, text: str, related_texts: List[str] = None) -> Dict[str, Any]:
+        """
+        Classify text using DeBERTa with related context.
+
+        Args:
+            text: The text to classify
+            related_texts: Optional list of related statements for context
+
+        Returns:
+            Dict with classification results
+        """
+        # For now, just use the regular DeBERTa classify method
+        # In the future, this could incorporate the related_texts for better context
+        label, confidence = self.deberta.classify(text)
+
+        if label and confidence > self.deberta.threshold:
+            return {
+                "label": label,
+                "confidence": confidence,
+                "method": "deberta",
+                "reasoning": f"DeBERTa classification with {confidence:.2f} confidence"
+            }
+
+        return {
+            "label": None,
+            "confidence": confidence,
+            "method": "deberta_below_threshold"
+        }
+
     def classify_with_comparisons(self, text: str, comparison_texts: List[str] = None) -> Dict[str, Any]:
         """
         Classify text using the multi-stage pipeline with comparison to other statements.

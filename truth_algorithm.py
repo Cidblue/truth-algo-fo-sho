@@ -212,15 +212,20 @@ class TruthAlgorithm:
 
     def _apply_rule_analysis(self, stmt):
         """Apply traditional rule-based analysis to a statement."""
-        # Apply outpoint rules
-        for rule in RULES_OUT:
-            if rule.check(stmt, self.truth_graph):
-                stmt.outpoints.append(rule.name)
+        # Use the regex-based rule engine
+        from rules.rule_engine import rule_classify
 
-        # Apply pluspoint rules
-        for rule in RULES_PLUS:
-            if rule.check(stmt, self.truth_graph):
-                stmt.pluspoints.append(rule.name)
+        rule_results = rule_classify(stmt.text)
+
+        for label, confidence in rule_results:
+            if "_OUT" in label:
+                outpoint = label.replace("_OUT", "").lower()
+                if outpoint not in stmt.outpoints:
+                    stmt.outpoints.append(outpoint)
+            elif "_PLUS" in label:
+                pluspoint = label.replace("_PLUS", "").lower()
+                if pluspoint not in stmt.pluspoints:
+                    stmt.pluspoints.append(pluspoint)
 
     def _apply_llm_analysis(self, stmt):
         """Apply LLM-based analysis to a statement."""

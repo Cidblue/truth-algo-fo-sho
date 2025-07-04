@@ -5,27 +5,33 @@
       "text": "The factory reported record profits in Q1.",
       "source": "Finance-Dept",
       "timestamp": null,
-      "outpoints": [],
+      "outpoints": [
+        "contrary_facts"
+      ],
       "pluspoints": [],
-      "truth_score": 0.5
+      "truth_score": 0.4
     },
     {
       "id": "s2",
       "text": "We were unable to pay suppliers in Q1.",
       "source": "Accounts-Payable",
       "timestamp": null,
-      "outpoints": [],
+      "outpoints": [
+        "contrary_facts"
+      ],
       "pluspoints": [],
-      "truth_score": 0.5
+      "truth_score": 0.4
     },
     {
       "id": "s3",
       "text": "Everyone knows the CEO is embezzling funds!!",
       "source": "Office-Rumor",
       "timestamp": null,
-      "outpoints": [],
+      "outpoints": [
+        "wrong_source"
+      ],
       "pluspoints": [],
-      "truth_score": 0.5
+      "truth_score": 0.4
     }
   ],
   "classified_statements": [
@@ -34,30 +40,36 @@
       "text": "The factory reported record profits in Q1.",
       "source": "Finance-Dept",
       "timestamp": null,
-      "outpoints": [],
+      "outpoints": [
+        "contrary_facts"
+      ],
       "pluspoints": [],
-      "truth_score": 0.5,
-      "classification": "Possibly True"
+      "truth_score": 0.4,
+      "classification": "Possibly False"
     },
     {
       "id": "s2",
       "text": "We were unable to pay suppliers in Q1.",
       "source": "Accounts-Payable",
       "timestamp": null,
-      "outpoints": [],
+      "outpoints": [
+        "contrary_facts"
+      ],
       "pluspoints": [],
-      "truth_score": 0.5,
-      "classification": "Possibly True"
+      "truth_score": 0.4,
+      "classification": "Possibly False"
     },
     {
       "id": "s3",
       "text": "Everyone knows the CEO is embezzling funds!!",
       "source": "Office-Rumor",
       "timestamp": null,
-      "outpoints": [],
+      "outpoints": [
+        "wrong_source"
+      ],
       "pluspoints": [],
-      "truth_score": 0.5,
-      "classification": "Possibly True"
+      "truth_score": 0.4,
+      "classification": "Possibly False"
     }
   ],
   "whys": [],

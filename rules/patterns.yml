@@ -10,7 +10,7 @@ OMITTED_DATA:
       # Phrases indicating awareness of missing elements
       "\\b(without (any|the) (mention of|reference to)|fails to (mention|include|address))\\b",
       # Statements with questions about missing elements
-      "\\b(where (is|are the|what happened to the|who was responsible for)\\b",
+      "\\b(where (is|are the|what happened to the|who was responsible for))\\b",
       # Incomplete data indicators
       "\\b(insufficient|incomplete|partial|fragmentary|limited)\\b(?=.*\\b(information|data|details|evidence)\\b)",
     ]
@@ -193,6 +193,10 @@ WRONG_SOURCE:
       "\\b(unverified|unconfirmed|uncorroborated|anonymous|unnamed)\\b.*\\b(source|report|claim|allegation)\\b",
       # Misattribution
       "\\b(falsely attributed|misattributed|wrongly credited)\\b",
+      # Vague collective claims (everyone knows, people say, etc.)
+      "\\b(everyone knows|everybody knows|people say|word is|rumor has it|they say|it's said)\\b",
+      # Unsubstantiated claims
+      "\\b(allegedly|supposedly|reportedly|apparently)\\b(?!.*\\b(according to|per|from|source)\\b)",
     ]
   plus: [
       # Reliable sources
