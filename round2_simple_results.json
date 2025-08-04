@@ -1,0 +1,9 @@
+{
+  "accuracy": 0.034482758620689655,
+  "training_duration": "0:12:06.502592",
+  "model_name": "bert-base-uncased",
+  "num_labels": 29,
+  "training_examples": 115,
+  "validation_examples": 29,
+  "timestamp": "2025-08-03T15:48:41.953454"
+}

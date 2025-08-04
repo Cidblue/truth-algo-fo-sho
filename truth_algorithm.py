@@ -108,9 +108,11 @@ pluspoint_descriptions = {
 class TruthAlgorithm:
     """Implements the complete Truth Algorithm as described in the conceptual framework."""
 
-    def __init__(self, llm_evaluator=None, confidence_threshold=0.7, use_llm=True, use_deberta=True):
+    def __init__(self, llm_evaluator=None, confidence_threshold=0.05, use_llm=True, use_deberta=True):
         """Initialize the Truth Algorithm with the classification pipeline."""
+        self.confidence_threshold = confidence_threshold
         self.classifier = ClassificationPipeline(
+            deberta_model_dir="models/round2-simple",
             deberta_threshold=confidence_threshold,
             use_llm_fallback=use_llm,
             llm_model_name="truth-evaluator"

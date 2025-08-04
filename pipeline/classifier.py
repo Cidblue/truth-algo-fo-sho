@@ -14,7 +14,7 @@ class ClassificationPipeline:
 
     def __init__(
         self,
-        deberta_model_dir: str = "models/deberta-lora",
+        deberta_model_dir: str = "models/round2-simple",
         deberta_threshold: float = 0.75,
         use_llm_fallback: bool = True,
         llm_model_name: str = "truth-evaluator",

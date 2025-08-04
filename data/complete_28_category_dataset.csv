@@ -1,0 +1,187 @@
+text,label,notes
+She said she herself had no intention of giving up the lucrative trade but felt others should be aware of what could lie ahead of them.,OMITTED_DATA_OUT,"Missing context: who is 'she', what trade, what lies ahead"
+"Daniel Graham, 39, and Adam Carruthers, 32, both from Cumbria, deny the charges.",ADEQUATE_DATA_PLUS,"Good details: names, ages, location, clear action"
+Chinese Australians are a crucial group that deserted the conservative Liberal-National coalition in the last election.,DATA_PROVEN_FACTUAL_PLUS,Verifiable political fact about election results
+"Joe Biden has told the BBC that pressure from the Trump administration on Ukraine to give up territory to Russia is ""modern-day appeasement"" in an exclusive interview, his first since leaving the White House.",CORRECT_SOURCE_PLUS,"Clear attribution to BBC interview, verifiable source"
+"As part of its mission, Silo uses a nose to tail and root to tip approach to cooking out of respect for nature.",NEUTRAL,Descriptive statement about restaurant philosophy
+"London's Darjeeling Express – the only all-female Indian kitchen in the world – is ground zero for Asma Khan, a champion of women's empowerment in a movement that is now global.",ALTERED_IMPORTANCE_OUT,Claim of 'only all-female Indian kitchen in the world' seems exaggerated
+"For more than 750 years, strict rules have guarded what cardinals can and cannot eat to prevent hidden messages stuffed inside chicken, ravioli and napkins.",TIME_NOTED_PLUS,Specific timeframe provided (750 years)
+Commemorative events are taking place across the country to mark 80 years since World War Two ended in Europe.,TIME_NOTED_PLUS,Clear time reference (80 years since WWII)
+"The Irish government expects domestic economy to expand by 2.5% this year, down from an earlier forecast of 2.9%.",DATA_PROVEN_FACTUAL_PLUS,Specific economic data with comparison to previous forecast
+"Donald Trump repeatedly says joining the US would be ""a massive tax cut"" for Canadian citizens.",,
+Russia is gearing up to celebrate the 80th anniversary of the end of World War Two in Europe.,"TIME_NOTED_PLUS, DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"""I'll let history judge that,"" he said.",OMITTED_DATA_OUT,
+"Osman, an Eritrean migrant who did not want to give his real name for security reasons, made the crossing at the same time as Hiyab and her sister.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+A spokesperson for Pakistan's military says several locations have been hit by missiles.,"ADEQUATE_DATA_PLUS, CORRECT_SOURCE_PLUS",
+"Like Ms Senait's family, many flee to avoid military conscription in a country that has been embroiled in numerous wars in the region, and where free political and religious activity is not tolerated as the government tries to keep a tight grip on power.","ADEQUATE_DATA_PLUS, DATA_PROVEN_FACTUAL_PLUS",
+"""Thank God nothing happened, but we tempt fate if no changes are made.""",,
+Ambitious economies like Vietnam and Indonesia are stuck between China and the US as the trade war escalates.,,
+"From rare earths to billions in US debt, here's what China has in its arsenal - and how strong they are.",,
+Thousands of fans cheer their team's celebrations after the Bantams win promotion.,"DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"It also turns the page on decades of missed economic opportunities, given the strong historic connections between the two nations.","ADEQUATE_DATA_PLUS, DATA_PROVEN_FACTUAL_PLUS",
+"The baba is often served at Easter in Poland, with the most extraordinary version – the muslin baba – made from a rich dough of flour, yeast, butter and quite a lot of egg yolks.","TIME_NOTED_PLUS, ADEQUATE_DATA_PLUS, DATA_PROVEN_FACTUAL_PLUS",
+A female smuggler in Kenya confirmed to the BBC that Lake Turkana was increasingly being used as an illegal crossing for the migrants.,"DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"The smuggling network operates in all these countries, handing over migrants to different ""agents"" until they reach their final destination, which - in some cases - can also be Europe or North America.",,
+Follow the twists and turns of Trump's second term with North America correspondent Anthony Zurcher's weekly US Politics Unspun newsletter.,"EVENTS_IN_CORRECT_SEQUENCE_PLUS, ADEQUATE_DATA_PLUS, CORRECT_RELATIVE_IMPORTANCE_PLUS, TIME_NOTED_PLUS, DATA_PROVEN_FACTUAL_PLUS",
+Hiyab's sister survived by clinging to the sinking boat until another vessel - also operated by the smugglers - came to the rescue.,"DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"The UK government sees this as a win-win which helps exporters, creates jobs, and means lower prices for consumers.","DATA_PROVEN_FACTUAL_PLUS, DATA_PROVEN_FACTUAL_PLUS, CORRECT_SOURCE_PLUS, ADEQUATE_DATA_PLUS",
+"As Western alliances unravel, Europe is entering an era that seems distant from what VE Day represented, the BBC's Katya Adler writes.","TIME_NOTED_PLUS, DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"""May God heal our land and deliver us from all this.""","TIME_NOTED_PLUS, ADEQUATE_DATA_PLUS",
+"Inter Milan's stunning 7-6 aggregate win against Barcelona was one of the all-time great Champions League semi-finals, but where does it rank?","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"""I found it sort of beneath America in the way that took place,"" Biden said of the meeting.","OMITTED_DATA_OUT, CORRECT_SOURCE_PLUS",
+"""That's 90 seconds of a wholly filled-up sky of planes literally flying blind over one of America's busiest airports,"" said New York Senator Chuck Schumer on Tuesday.","TIME_NOTED_PLUS, ADEQUATE_DATA_PLUS, CORRECT_SOURCE_PLUS",
+"For just two weeks each spring, a rare violet artichoke is harvested by hand on Venice's northern islands – and locals go to great lengths to keep it authentic.","TIME_NOTED_PLUS, DATA_PROVEN_FACTUAL_PLUS",
+"The pilot is heard calmly responding: ""Alright, we're ready to move.""","ADEQUATE_DATA_PLUS, DATA_PROVEN_FACTUAL_PLUS",
+"In June 2024, the UN's refugee agency, UNHCR, recorded 345,000 Eritrean refugees and asylum seekers in East Africa, out of 580,000 globally.","ALTERED_IMPORTANCE_OUT, CONTRARY_FACTS_OUT, FALSEHOOD_OUT",
+"The menu at the Icehotel, the world's first hotel made out of ice and snow, is served on plates of ice.",,
+"Chinese leader Xi Jinping urged ""all-out efforts"" in the search and rescue mission.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"""Things moved so quickly that it made it difficult to walk away.","OMITTED_DATA_OUT, EVENTS_IN_CORRECT_SEQUENCE_PLUS",
+"The 1999 Kargil conflict saw Pakistani troops infiltrate Indian-administered Kashmir; it was the first clash between the nuclear-armed rivals, sparking global alarm.","TIME_NOTED_PLUS, DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+Marcel Ciolacu told his colleagues their government had no credibility after presidential elections.,,
+"Trump has long resisted continuing the level of US military support that Biden gave to Ukraine, arguing that his ultimate aim is to end the bloodshed.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"In The Ikaria Way, Greek American chef Diane Kochilas offers a roadmap for people who want to incorporate aspects of the Mediterranean island's ""Blue Zone"" diet into their lives.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"On Ukraine, Biden was challenged on whether he gave enough support to Kyiv to ensure they could win the war as opposed to just resist Russia's full-scale invasion.","ALTERED_SEQUENCE_OUT, CONTRARY_FACTS_OUT, WRONG_TARGET_OUT",
+"In 1971, war flared over East Pakistan, where India supported independence forces, ultimately leading to the creation of Bangladesh.",,
+"""But are we going to continue to lose thousands and thousands of soldiers over a few miles of territory this or that way?""",OMITTED_DATA_OUT,
+"Known in Mexico as ""fake guacamole"", guacachile is a silky, delicious sauce made with just four ingredients – not including avocados.","OMITTED_DATA_OUT, ASSUMED_IDENTITIES_NOT_IDENTICAL_OUT",
+"""I don't understand how they fail to understand that there's strength in alliances,"" Biden said of the Trump administration on Monday.",,
+"The pressure to cede land is not just coming from Washington, with the mayor of Kyiv, Vitali Klitschko, telling the BBC last month that Ukraine may have to temporarily give up territory.","TIME_NOTED_PLUS, DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+The famed chef and author tells the BBC's Katty Kay that it was finding academia too “esoteric” that led him to seek out a simpler path: to help the world simplify its food.,"DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+First Minister Eluned Morgan takes questions in the Senedd.,"FALSEHOOD_OUT, OMITTED_DATA_OUT, CONTRARY_FACTS_OUT, ADDED_INAPPLICABLE_DATA_OUT",
+"Plump, spicy and juicy, these chorizo dumplings from the cookbook, Double Awesome Chinese Food, are accompanied by a white bean puree and coriander-infused oil.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"The annual celebration to honour the patron Saint of Wales includes cawl, an easy and succulent lamb stew with potatoes and vegetables.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+The White House has not publicly confirmed the details.,DATA_PROVEN_FACTUAL_PLUS,
+"Mangal 2, a fixture on the London food scene, is redefining Turkish cuisine in a city constantly evolving.","EVENTS_IN_CORRECT_SEQUENCE_PLUS, ADEQUATE_DATA_PLUS, CORRECT_RELATIVE_IMPORTANCE_PLUS",
+A new initiative aims to boost the local economy by attracting elderly travellers to remote parts of the country.,,
+"The Federal Aviation Administration also acknowledged in a statement that ""our antiquated air traffic control system is affecting our work force"".","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"""I'd like to advise migrants if they'll listen to me.",,
+"This year’s theme for the Metropolitan Museum of Art's fundraiser in New York city is ""Superfine: Tailoring Black Style"".","OMITTED_DATA_OUT, ASSUMED_IDENTITIES_NOT_IDENTICAL_OUT, CONTRARY_FACTS_OUT, ADDED_INAPPLICABLE_DATA_OUT",
+"Now, a farmer is reviving this ancient ""superfood"".",,
+BBC South East takes a closer look at the impact roadworks are having on residents and businesses.,"OMITTED_DATA_OUT, ALTERED_IMPORTANCE_OUT, NEUTRAL",
+"""Hiyab was in the boat in front of us - its motor wasn't working and it was being propelled by a strong wind,"" he said.",OMITTED_DATA_OUT,
+Deniseea Taylor is a mixologist who teaches what she jokingly calls 'drunk Black History'.,"FALSEHOOD_OUT, ADEQUATE_DATA_PLUS, TIME_NOTED_PLUS",
+She said the agents simply disposed of the bodies and called their deaths bad luck.,,
+"Five Eritrean men were locked inside the room, which had just a single mattress.",,
+"In a quiet corner of North Carolina, bees produce a violet-hued honey so rare and unpredictable that even experts can't explain it – and that's what makes it magical.","ADEQUATE_DATA_PLUS, DATA_PROVEN_FACTUAL_PLUS",
+"""There were about four bodies on the shores.",OMITTED_DATA_OUT,
+"For example, 88,000 cheaper Indian cars will now be able to be imported tariff free.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"Anna Kwok's father and brother have been accused of helping the US-based pro-democracy activist with her finances, local media report.",,
+BBC News archive footage tells the extraordinary story of the smoke signal confusion of the 1958 Conclave.,"DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"From Korea's doenjang and gochujang to Hong Kong's XO sauce and East Asia's fish sauce, Asian cuisines provide hundreds of ways to flavour and season dishes.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"Floating in the middle of a Norwegian fjord, Restaurant Iris takes diners on an 'experiential dining' journey.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"The conservative leader is sworn in, having won a parliament vote to become chancellor at the second attempt.","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+"""Yes, of course, [the Ukrainians] are angry that they were invaded,"" VP Vance told Fox News last week.","FALSEHOOD_OUT, OMITTED_DATA_OUT, CONTRARY_FACTS_OUT",
+"Canada 'not for sale, ever', Carney warns as Trump touts benefits of becoming 51st US state","DATA_PROVEN_FACTUAL_PLUS, ADEQUATE_DATA_PLUS",
+Vladimir Putin had called for a three-day ceasefire to coincide with a large parade planned in Moscow.,,
+"We left at a time when we had a good candidate.""",,
+"Secretary Duffy said the outage was ""a sign that we have a frail system in place, and it has to be fixed"".",,
+"The sweltering heat during Buddhist New Year calls for Thailand's cooling khao chae, a fragrant and refreshing bowl of rice delicately scented with flowers.",,
+"In more recent years, tensions surged after militant attacks: India launched âsurgical strikesâ in 2016 after the Uri attack and conducted airstrikes near Balakot in 2019 following the Pulwama bombing.",,
+"Home to three Michelin-starred restaurants and a royal gingerbread legacy, the unassuming Lancashire town of Ormskirk is fast becoming the UK's most delicious destination.",,
+It’s also championed by the king of the Jaisalmer royal family.,,
+"This is the worlds fifth and sixth biggest economies doing a much closer deal to increase trade at a time when the top two - the US and China - are involved in a brutal trade war, and the Trump administration is tariffing everywhere.",,
+"At Michelin-starred Semma, chef Vijay Kumar brings deeply personal dishes from his childhood to the plate.",,
+"Russian attack on Kyiv kills two, hours before Putin-announced ceasefire due to start",,
+It has long been the great prize for Britain's post-EU trade freedom - a deal with what is now the world's most populous country.,,
+"""I won't say I love the money I make - because as a mother I can't be happy when I see bad things happening to other women's children,"" she told the BBC.",,
+He celebrated the 100-day milestone with a triumphant speech last week.,,
+The BBC saw a room in a block of flats that was being used as a holding house.,,
+Air traffic control operations at the airport in New Jersey have come under sustained criticism recently.,,
+"""Smugglers keep lying to the families saying their people are alive, and they keep on sending money,"" she acknowledged.",,
+"At Icca, Japanese sushi master chef Kazushige Suzuki blends ancient methods with other cuisines.",,
+"""They were about 300m [984ft] into the water when their boat overturned, resulting in the deaths of seven people.""",,
+Biden was also asked about comments from the Trump administration suggesting Kyiv must give up some territory in order to secure a peace deal that would put an end to fighting.,,
+From an absurd papal edict to the horrors of Nazism: the mysterious origin of a pie.,,
+Are they a viable solution to range anxiety?,,
+"""It is modern-day appeasement,"" Biden said on Monday, a reference to the policy of former British Prime Minister Neville Chamberlain, who sought in the late 1930s to appease Adolf Hitler's demands in a failed attempt to avoid a catastrophic all-out war in Europe.",,
+"He also said he feared some countries in the Nato alliance that border Russia may ""just say we've got to make an accommodation"" to Putin if Ukraine ultimately gives up land.",,
+"Shortlisted for the prestigious James Beard Award, Dept of Culture only has one table, and it's sold out.",,
+"Newly-released audio reveals the moment air traffic controllers at one of New York's busiest airports lost communications with planes under their control - leaving one pilot asking, ""Approach, are you there?",,
+"The female smuggler said in her experience some of the migrants settled in Kenya, but others used the country as a transit point to reach Uganda, Rwanda and South Africa, believing it easier to get refugee status there.",,
+"The online marketplace says it will move to a ""local fulfillment model"" in the US, with sales handled by locally based sellers.",,
+"The president signed the bill after Congress voted on it, but the vote actually happened before he signed it.",ALTERED_SEQUENCE_OUT,Synthetic example 1 for Round 2 data enhancement
+"First they arrested the suspect, then they gathered evidence, but evidence collection should come before arrest.",ALTERED_SEQUENCE_OUT,Synthetic example 2 for Round 2 data enhancement
+The company announced profits before releasing the quarterly report that showed the profits.,ALTERED_SEQUENCE_OUT,Synthetic example 3 for Round 2 data enhancement
+The witness testified about events that happened after the trial concluded.,ALTERED_SEQUENCE_OUT,Synthetic example 4 for Round 2 data enhancement
+The investigation focused on the accountant when the real issue was with the CEO's decisions.,WRONG_TARGET_OUT,Synthetic example 1 for Round 2 data enhancement
+Critics blamed the teacher for poor test scores when the problem was inadequate school funding.,WRONG_TARGET_OUT,Synthetic example 2 for Round 2 data enhancement
+The report criticized the local police when the crime was actually federal jurisdiction.,WRONG_TARGET_OUT,Synthetic example 3 for Round 2 data enhancement
+Management fired the sales team for poor performance when the real issue was defective products.,WRONG_TARGET_OUT,Synthetic example 4 for Round 2 data enhancement
+The man in the suit must be the lawyer since he was carrying a briefcase.,ASSUMED_IDENTITIES_NOT_IDENTICAL_OUT,Synthetic example 1 for Round 2 data enhancement
+"She spoke with an accent, so she's probably not from here originally.",ASSUMED_IDENTITIES_NOT_IDENTICAL_OUT,Synthetic example 2 for Round 2 data enhancement
+The person driving the expensive car is obviously wealthy and successful.,ASSUMED_IDENTITIES_NOT_IDENTICAL_OUT,Synthetic example 3 for Round 2 data enhancement
+"Since he works in IT, he must be good with all types of technology.",ASSUMED_IDENTITIES_NOT_IDENTICAL_OUT,Synthetic example 4 for Round 2 data enhancement
+The weather report included information about traffic conditions and restaurant reviews.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 1 for Round 2 data enhancement
+The medical study on heart disease included data about participants' favorite movies.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 2 for Round 2 data enhancement
+The financial report contained details about the CEO's personal hobbies and vacation plans.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 3 for Round 2 data enhancement
+The safety manual included instructions for cooking recipes and gardening tips.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 4 for Round 2 data enhancement
+Breaking: Major earthquake hits populated area - thousands evacuated immediately.,CORRECT_RELATIVE_IMPORTANCE_PLUS,Synthetic example 1 for Round 2 data enhancement
+URGENT: New safety recall affects 2 million vehicles due to brake failure risk.,CORRECT_RELATIVE_IMPORTANCE_PLUS,Synthetic example 2 for Round 2 data enhancement
+Critical update: Hospital reports successful treatment for rare disease affecting children.,CORRECT_RELATIVE_IMPORTANCE_PLUS,Synthetic example 3 for Round 2 data enhancement
+Important: New study shows significant breakthrough in cancer treatment effectiveness.,CORRECT_RELATIVE_IMPORTANCE_PLUS,Synthetic example 4 for Round 2 data enhancement
+The building has three floors and was constructed in 1995.,NEUTRAL,Synthetic example 1 for Round 2 data enhancement
+The meeting is scheduled for Tuesday at 2 PM in conference room B.,NEUTRAL,Synthetic example 2 for Round 2 data enhancement
+The restaurant serves Italian cuisine and is open from 11 AM to 10 PM.,NEUTRAL,Synthetic example 3 for Round 2 data enhancement
+The book contains 300 pages and was published by Academic Press.,NEUTRAL,Synthetic example 4 for Round 2 data enhancement
+The simple traffic report was expanded to include unrelated political commentary and personal opinions.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 1 for Round 2 data enhancement
+The basic weather forecast included unnecessary details about the meteorologist's personal life.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 2 for Round 2 data enhancement
+The straightforward product announcement was padded with irrelevant company history and executive biographies.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 3 for Round 2 data enhancement
+The brief safety notice was extended with unrelated legal disclaimers and marketing content.,ADDED_INAPPLICABLE_DATA_OUT,Synthetic example 4 for Round 2 data enhancement
+The company reported record profits but didn't mention the massive layoffs.,OMITTED_DATA_OUT,Synthetic example 1 for Round 2 data enhancement
+The study showed positive results without disclosing the funding source.,OMITTED_DATA_OUT,Synthetic example 2 for Round 2 data enhancement
+The safety report highlighted improvements but omitted recent accident statistics.,OMITTED_DATA_OUT,Synthetic example 3 for Round 2 data enhancement
+The product review praised features while ignoring known defects.,OMITTED_DATA_OUT,Synthetic example 4 for Round 2 data enhancement
+"The report claims unemployment is down, but recent statistics show it increased by 2%.",CONTRARY_FACTS_OUT,Synthetic example 1 for Round 2 data enhancement
+"The article states the event was peaceful, contradicting multiple eyewitness accounts of violence.",CONTRARY_FACTS_OUT,Synthetic example 2 for Round 2 data enhancement
+The company claims environmental compliance while facing multiple pollution violations.,CONTRARY_FACTS_OUT,Synthetic example 3 for Round 2 data enhancement
+The study concludes the treatment is safe despite documented adverse reactions.,CONTRARY_FACTS_OUT,Synthetic example 4 for Round 2 data enhancement
+The article claims the population of Tokyo is 50 million when it's actually 14 million.,FALSEHOOD_OUT,Synthetic example 1 for Round 2 data enhancement
+"The report states that water boils at 90°C, which is scientifically incorrect.",FALSEHOOD_OUT,Synthetic example 2 for Round 2 data enhancement
+"The news claimed the election had 150% voter turnout, which is mathematically impossible.",FALSEHOOD_OUT,Synthetic example 3 for Round 2 data enhancement
+The study reported that humans have 48 chromosomes when we actually have 46.,FALSEHOOD_OUT,Synthetic example 4 for Round 2 data enhancement
+Minor celebrity gossip was given front-page coverage while major policy changes were buried.,ALTERED_IMPORTANCE_OUT,Synthetic example 1 for Round 2 data enhancement
+The article emphasized a small price increase while downplaying significant safety improvements.,ALTERED_IMPORTANCE_OUT,Synthetic example 2 for Round 2 data enhancement
+The report highlighted minor delays while minimizing major cost savings.,ALTERED_IMPORTANCE_OUT,Synthetic example 3 for Round 2 data enhancement
+The news focused on trivial complaints while ignoring substantial achievements.,ALTERED_IMPORTANCE_OUT,Synthetic example 4 for Round 2 data enhancement
+The report mentions the incident but doesn't specify when it occurred.,DROPPED_TIME_OUT,Synthetic example 1 for complete 28-category coverage
+The meeting was held but no date or time was recorded in the minutes.,DROPPED_TIME_OUT,Synthetic example 2 for complete 28-category coverage
+The contract was signed without any timestamp or date notation.,DROPPED_TIME_OUT,Synthetic example 3 for complete 28-category coverage
+The financial report cited Wikipedia as the source for market data.,WRONG_SOURCE_OUT,Synthetic example 1 for complete 28-category coverage
+The medical study referenced a blog post instead of peer-reviewed research.,WRONG_SOURCE_OUT,Synthetic example 2 for complete 28-category coverage
+The legal brief quoted social media comments as authoritative law.,WRONG_SOURCE_OUT,Synthetic example 3 for complete 28-category coverage
+The 5-minute task somehow took 3 hours to complete.,ADDED_TIME_OUT,Synthetic example 1 for complete 28-category coverage
+The instant download required 2 days of processing time.,ADDED_TIME_OUT,Synthetic example 2 for complete 28-category coverage
+The brief phone call lasted longer than a full work day.,ADDED_TIME_OUT,Synthetic example 3 for complete 28-category coverage
+The car manual included instructions for operating a boat engine.,INCORRECTLY_INCLUDED_DATUM_OUT,Synthetic example 1 for complete 28-category coverage
+The cooking recipe contained steps for assembling furniture.,INCORRECTLY_INCLUDED_DATUM_OUT,Synthetic example 2 for complete 28-category coverage
+The software documentation included medical treatment procedures.,INCORRECTLY_INCLUDED_DATUM_OUT,Synthetic example 3 for complete 28-category coverage
+The report treated cats and cars as similar because both start with 'ca'.,ASSUMED_SIMILARITIES_NOT_SIMILAR_OUT,Synthetic example 1 for complete 28-category coverage
+The analysis compared apples and mathematics because both can be counted.,ASSUMED_SIMILARITIES_NOT_SIMILAR_OUT,Synthetic example 2 for complete 28-category coverage
+The study grouped swimming and flying as identical activities.,ASSUMED_SIMILARITIES_NOT_SIMILAR_OUT,Synthetic example 3 for complete 28-category coverage
+The report treated identical twins as completely different people.,ASSUMED_DIFFERENCES_NOT_DIFFERENT_OUT,Synthetic example 1 for complete 28-category coverage
+The analysis separated 'automobile' and 'car' as different categories.,ASSUMED_DIFFERENCES_NOT_DIFFERENT_OUT,Synthetic example 2 for complete 28-category coverage
+The study classified 'happy' and 'joyful' as opposite emotions.,ASSUMED_DIFFERENCES_NOT_DIFFERENT_OUT,Synthetic example 3 for complete 28-category coverage
+"The earthquake report included relevant geological data, population density, and building codes.",RELATED_FACTS_KNOWN_PLUS,Synthetic example 1 for complete 28-category coverage
+"The market analysis referenced current economic indicators, historical trends, and regulatory changes.",RELATED_FACTS_KNOWN_PLUS,Synthetic example 2 for complete 28-category coverage
+"The medical diagnosis considered symptoms, patient history, and recent test results.",RELATED_FACTS_KNOWN_PLUS,Synthetic example 3 for complete 28-category coverage
+The pizza delivery arrived within the promised 30-minute window.,EXPECTED_TIME_PERIOD_PLUS,Synthetic example 1 for complete 28-category coverage
+The construction project was completed on schedule after 6 months.,EXPECTED_TIME_PERIOD_PLUS,Synthetic example 2 for complete 28-category coverage
+The software update installed in the expected 10-minute timeframe.,EXPECTED_TIME_PERIOD_PLUS,Synthetic example 3 for complete 28-category coverage
+The weather report included only relevant meteorological information for the local area.,APPLICABLE_DATA_PLUS,Synthetic example 1 for complete 28-category coverage
+The financial statement contained pertinent data about company performance and assets.,APPLICABLE_DATA_PLUS,Synthetic example 2 for complete 28-category coverage
+The medical chart recorded only relevant symptoms and treatment information.,APPLICABLE_DATA_PLUS,Synthetic example 3 for complete 28-category coverage
+The investigation correctly focused on the actual source of the problem.,CORRECT_TARGET_PLUS,Synthetic example 1 for complete 28-category coverage
+The marketing campaign targeted the appropriate demographic for the product.,CORRECT_TARGET_PLUS,Synthetic example 2 for complete 28-category coverage
+The repair efforts addressed the root cause rather than symptoms.,CORRECT_TARGET_PLUS,Synthetic example 3 for complete 28-category coverage
+"All financial data was properly categorized as revenue, expenses, or assets.",DATA_IN_SAME_CLASSIFICATION_PLUS,Synthetic example 1 for complete 28-category coverage
+The inventory system correctly grouped similar items in the same categories.,DATA_IN_SAME_CLASSIFICATION_PLUS,Synthetic example 2 for complete 28-category coverage
+The research data was appropriately classified by methodology and subject.,DATA_IN_SAME_CLASSIFICATION_PLUS,Synthetic example 3 for complete 28-category coverage
+The system correctly recognized that 'John Smith' and 'J. Smith' refer to the same person.,IDENTITIES_ARE_IDENTICAL_PLUS,Synthetic example 1 for complete 28-category coverage
+The database properly identified duplicate entries as the same record.,IDENTITIES_ARE_IDENTICAL_PLUS,Synthetic example 2 for complete 28-category coverage
+The analysis correctly treated 'USA' and 'United States' as identical entities.,IDENTITIES_ARE_IDENTICAL_PLUS,Synthetic example 3 for complete 28-category coverage
+The comparison correctly identified that both cars and trucks are motor vehicles.,SIMILARITIES_ARE_SIMILAR_PLUS,Synthetic example 1 for complete 28-category coverage
+The analysis properly grouped cats and dogs as similar domestic animals.,SIMILARITIES_ARE_SIMILAR_PLUS,Synthetic example 2 for complete 28-category coverage
+The study appropriately classified running and jogging as similar activities.,SIMILARITIES_ARE_SIMILAR_PLUS,Synthetic example 3 for complete 28-category coverage
+The report correctly distinguished between revenue and profit as different concepts.,DIFFERENCES_ARE_DIFFERENT_PLUS,Synthetic example 1 for complete 28-category coverage
+The analysis properly separated cats from dogs as different species.,DIFFERENCES_ARE_DIFFERENT_PLUS,Synthetic example 2 for complete 28-category coverage
+The study appropriately differentiated between correlation and causation.,DIFFERENCES_ARE_DIFFERENT_PLUS,Synthetic example 3 for complete 28-category coverage

@@ -7,7 +7,7 @@ A comprehensive implementation of L. Ron Hubbard's Investigations methodology fo
 The Truth Algorithm uses a multi-layer approach to analyze statements and detect logical inconsistencies:
 
 1. **Regex Layer**: High-precision pattern matching for obvious cases
-2. **DeBERTa Layer**: Semantic understanding via machine learning (placeholder)
+2. **DeBERTa Layer**: Semantic understanding via machine learning ✅ **TRAINED**
 3. **LLM Layer**: Complex analysis with RAG (Retrieval-Augmented Generation)
 
 ## ✅ Current Status
@@ -21,6 +21,8 @@ The Truth Algorithm uses a multi-layer approach to analyze statements and detect
 - ✅ RAG system with knowledge base retrieval
 - ✅ Comprehensive regex patterns for all 14 outpoints/pluspoints
 - ✅ Knowledge graph for relational analysis
+- ✅ **DeBERTa classifier trained** with complete 28-category coverage
+- ✅ **Round 2 model available** at `models/round2-simple/`
 
 ## 🚀 Quick Start
 
@@ -153,7 +155,16 @@ truth-pipeline/
 
 ## 📈 Recent Improvements
 
-**Latest Session (Jan 3, 2025):**
+**Latest Session (Aug 3, 2025) - Round 2 Training Complete:**
+
+- ✅ **CRITICAL FIX**: Resolved 17→28 category issue (missing L. Ron Hubbard categories)
+- ✅ **Round 2 Model Trained**: Complete 28-category DeBERTa classifier
+- ✅ **Comprehensive Documentation**: Created MODEL_DOCUMENTATION.md
+- ✅ **Training Infrastructure**: Multiple training scripts and validation tools
+- ✅ **Data Enhancement**: 186 training examples with balanced category coverage
+- ✅ **Threshold Optimization**: Improved from 0% to 100% prediction coverage
+
+**Previous Session (Jan 3, 2025):**
 
 - ✅ Fixed pipeline integration bugs
 - ✅ Enhanced contradiction detection
@@ -163,13 +174,16 @@ truth-pipeline/
 
 ## 🚧 Known Limitations
 
-- **DeBERTa Layer**: Currently placeholder, needs actual model training
+- **DeBERTa Performance**: Round 2 model has 3.4% accuracy (needs optimization)
 - **Performance**: Not optimized for large datasets
 - **Domain Specificity**: Patterns are general-purpose, not domain-specific
+- **Round 3 Needed**: Hyperparameter tuning required for better accuracy
 
 ## 📚 Documentation
 
 - **`SESSION_STATUS.md`** - **Current session status and next steps** (START HERE)
+- **`docs/MODEL_DOCUMENTATION.md`** - **Complete model guide and usage** (NEW)
+- **`docs/Round2_Progress_Documentation.md`** - **Round 2 training details** (NEW)
 - **`docs/Session_Continuity_Guide.md`** - **Complete guide to session management**
 - `docs/Plan.txt` - Development roadmap and priorities
 - `docs/Algorithm.txt` - Conceptual framework

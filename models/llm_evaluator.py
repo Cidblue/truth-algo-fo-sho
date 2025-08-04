@@ -19,7 +19,8 @@ class LLMEvaluator:
         cache_file: str = "llm_cache.pkl",
         batch_size: int = 1,
         use_rag: bool = True,
-        max_chunks: int = 3
+        max_chunks: int = 3,
+        timeout: int = 600
     ):
         """Initialize the LLM evaluator with model configuration."""
         self.model_name = model_name
@@ -28,6 +29,7 @@ class LLMEvaluator:
         self.batch_size = batch_size
         self.use_rag = use_rag
         self.max_chunks = max_chunks
+        self.timeout = timeout
 
         # Load cache if it exists
         try:
@@ -207,7 +209,7 @@ REASONING: [Your brief explanation]
 """
         return prompt
 
-    def _query_llm(self, prompt: str, max_retries: int = 3, timeout: int = 60) -> str:
+    def _query_llm(self, prompt: str, max_retries: int = 3, timeout: int = 600) -> str:
         """Send a query to the local LLM API and get the response with retry logic."""
         # Check cache first to avoid duplicate evaluations
         cache_key = hashlib.md5(prompt.encode()).hexdigest()
