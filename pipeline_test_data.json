@@ -1,0 +1,32 @@
+[
+  {
+    "id": "stmt_1",
+    "text": "The company reported record profits in Q1 but was unable to pay suppliers.",
+    "time": "2025-01-15",
+    "source": "Finance Report"
+  },
+  {
+    "id": "stmt_2", 
+    "text": "Everyone knows the CEO is embezzling funds from the company.",
+    "time": "2025-01-16",
+    "source": "Anonymous Tip"
+  },
+  {
+    "id": "stmt_3",
+    "text": "Sales increased by 15% in Q4 compared to Q3 according to verified records.",
+    "time": "2025-01-17", 
+    "source": "Sales Department"
+  },
+  {
+    "id": "stmt_4",
+    "text": "The factory was closed all month but generated record production numbers.",
+    "time": "2025-01-18",
+    "source": "Production Report"
+  },
+  {
+    "id": "stmt_5",
+    "text": "We received the shipment on Tuesday and it arrived on Friday.",
+    "time": "2025-01-19",
+    "source": "Logistics"
+  }
+]

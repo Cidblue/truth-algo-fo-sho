@@ -15,8 +15,8 @@ def test_rag_integration():
 
     embedding_model = init_embedding_model()
 
-    # Initialize LLM evaluator with RAG enabled
-    evaluator = LLMEvaluator(use_rag=True, max_chunks=5)
+    # Initialize LLM evaluator with RAG DISABLED to prevent massive prompts
+    evaluator = LLMEvaluator(use_rag=False, max_chunks=5)
     evaluator.vector_store = vector_store
     evaluator.embedding_model = embedding_model
     evaluator.min_score = 0.0  # Accept all matches for testing

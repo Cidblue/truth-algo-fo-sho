@@ -112,10 +112,10 @@ class TruthAlgorithm:
         """Initialize the Truth Algorithm with the classification pipeline."""
         self.confidence_threshold = confidence_threshold
         self.classifier = ClassificationPipeline(
-            deberta_model_dir="models/round2-simple",
+            deberta_model_dir="models/round3-corrected",  # Updated to Round 3
             deberta_threshold=confidence_threshold,
             use_llm_fallback=use_llm,
-            llm_model_name="truth-evaluator"
+            llm_model_name="dolphin3"  # Changed from truth-evaluator to avoid built-in RAG
         )
         self.truth_graph = TruthGraph()
         self.use_llm = use_llm
@@ -389,10 +389,10 @@ if __name__ == "__main__":
     evaluator = None
     if not args.no_llm:
         evaluator = LLMEvaluator(
-            model_name="truth-evaluator",
+            model_name="dolphin3",  # Changed from truth-evaluator to avoid built-in RAG
             api_url="http://localhost:11434/api/generate",
             cache_file="llm_cache.pkl",
-            use_rag=not args.no_rag
+            use_rag=False  # Disabled to prevent massive prompts
         )
 
         # Set max_chunks if provided

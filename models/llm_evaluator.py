@@ -18,7 +18,7 @@ class LLMEvaluator:
         api_url: str = "http://localhost:11434/api/generate",
         cache_file: str = "llm_cache.pkl",
         batch_size: int = 1,
-        use_rag: bool = True,
+        use_rag: bool = False,  # Changed default to False to prevent massive prompts
         max_chunks: int = 3,
         timeout: int = 600
     ):
